@@ -1,0 +1,46 @@
+$transition-time: 300ms;
+
+@mixin animate-to-top ($time: $transition-time) {
+  -webkit-animation: slide-in-top $time cubic-bezier(.25,.46,.45,.94) both;
+  animation: slide-in-top $time cubic-bezier(.25,.46,.45,.94) both;
+}
+
+@mixin animate-to-top-delay ($time: $transition-time, $delay: 1000ms) {
+  -webkit-animation: slide-in-top $time cubic-bezier(.25,.46,.45,.94) both;
+  animation: slide-in-top $time cubic-bezier(.25,.46,.45,.94) both;
+  animation-delay: $delay;
+}
+
+@mixin animate-to-right ($time: $transition-time) {
+  -webkit-animation: slide-in-right $time cubic-bezier(.25,.46,.45,.94) both;
+  animation: slide-in-right $time cubic-bezier(.25,.46,.45,.94) both;
+}
+
+@mixin animate-to-bottom ($time: $transition-time) {
+  -webkit-animation: slide-in-bottom $time cubic-bezier(.25,.46,.45,.94) both;
+  animation: slide-in-bottom $time cubic-bezier(.25,.46,.45,.94) both;
+}
+
+@mixin animate-to-left ($time: $transition-time) {
+  -webkit-animation: slide-in-left $time cubic-bezier(.25,.46,.45,.94) both;
+  animation: slide-in-left $time cubic-bezier(.25,.46,.45,.94) both;
+}
+
+@mixin animate-fadeIn ($time: $transition-time) {
+  -webkit-animation: fadeIn $time;
+  animation: fadeIn $time;
+}
+
+@mixin animate-in-sequence ($for: 20, $interval: 300ms) {
+  @for $i from 1 through $for {
+    &:nth-of-type(#{$i}) {
+      animation-delay: $i * $interval;
+    }
+  }
+}
+
+@mixin centralizar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

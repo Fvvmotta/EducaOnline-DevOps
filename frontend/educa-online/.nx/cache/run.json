@@ -1,0 +1,9 @@
+{
+  "run": {
+    "command": "nx s educa-online",
+    "startTime": "2025-09-24T13:58:01.968Z",
+    "endTime": "2025-09-24T13:58:11.629Z",
+    "inner": false
+  },
+  "tasks": []
+}

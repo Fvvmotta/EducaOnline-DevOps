@@ -1,0 +1,41 @@
+<div class="content-modal">
+  <div class="header-modal">
+    @if(!data?.id) {
+    <p class="titulo-sublinhado mb-2">Nova Aula</p>
+    }@else {
+    <p class="titulo-sublinhado mb-2">Editar aula</p>
+    }
+  </div>
+  <div class="body-modal" [formGroup]="form">
+    <div class="row">
+      <div class="col-12">
+        <mat-form-field class="example-full-width custom-form-field" appearance="outline">
+          <mat-label>Titulo</mat-label>
+          <input matInput formControlName="titulo">
+          <mat-error>{{form.titulo?.errors! | validationMessage}}</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="col-12">
+        <mat-form-field class="example-full-width custom-form-field" appearance="outline">
+          <mat-label>Total de horas</mat-label>
+          <input type="number" matInput formControlName="totalHoras">
+          <mat-error>{{form.totalHoras?.errors! | validationMessage}}</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="col-12">
+        <mat-form-field class="example-full-width custom-form-field" appearance="outline">
+          <mat-label>Descrição</mat-label>
+          <input matInput formControlName="descricao">
+          <mat-error>{{form.descricao?.errors! | validationMessage}}</mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-modal">
+    <button mat-raised-button (click)="voltar()">Voltar</button>
+    <button class="ms-3" mat-flat-button (click)="salvar()">Salvar aula</button>
+  </div>
+</div>

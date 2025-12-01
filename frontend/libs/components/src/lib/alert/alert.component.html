@@ -1,0 +1,40 @@
+
+<div class="alert-wrapper" [@slideContent]="animationState">
+  @if(data.status === 'sucesso') {
+    <div class="alert-icon sucesso">
+      <span class="material-symbols-outlined">
+        check_circle
+      </span>
+    </div>
+  }
+  @if(data.status === 'erro') {
+    <div class="alert-icon erro" >
+      <span class="material-symbols-outlined">
+        close
+      </span>
+    </div>
+  }
+  @if(data.status === 'aviso') {
+    <div class="alert-icon aviso">
+      <span class="material-symbols-outlined">
+        info
+      </span>
+    </div>
+  }
+  @if(data.status === 'info') {
+    <div class="alert-icon info">
+      <span class="material-symbols-outlined">
+        info
+      </span>
+    </div>
+  }
+
+  <div class="alert-desc">
+    <span class="alert-title">{{data.title}}</span>
+    <p class="alert-subtitle" [innerHTML]="data.subtitle"></p>
+  </div>
+
+  <!-- <div class="alert-close">
+    <i class="fal fa-times-circle icon cursor-pointer" (click)="close()"></i>
+  </div> -->
+</div>

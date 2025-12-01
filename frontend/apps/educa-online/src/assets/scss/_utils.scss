@@ -1,0 +1,327 @@
+@import './variables';
+
+// cria os '...' tres pontinhos quando o texto ultrapassar o tamanho da div
+.text-ellipisis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+// Centraliza o elemento filho da div que tiver essa classe
+.centraliza {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.font-weight-550 {
+  font-weight: 550;
+}
+
+// Centraliza texto - nao funciona com <span>
+.text-center {
+  text-align: center;
+}
+
+
+// FONTS
+// Classes de font
+.font-5 {
+  font-size: $size-5;
+}
+
+.font-6 {
+  font-size: $size-6;
+}
+
+.font-7 {
+  font-size: $size-7;
+}
+
+.font-8 {
+  font-size: $size-8;
+}
+
+.font-9 {
+  font-size: $size-9;
+}
+
+.font-10 {
+  font-size: $size-10;
+}
+
+.font-11 {
+  font-size: $size-11;
+}
+
+.font-12 {
+  font-size: $size-12;
+}
+
+.font-13 {
+  font-size: $size-13;
+}
+
+.font-14 {
+  font-size: $size-14;
+}
+
+.font-15 {
+  font-size: $size-15;
+}
+
+.font-16 {
+  font-size: $size-16;
+}
+
+.font-17 {
+  font-size: $size-17;
+}
+
+.font-18 {
+  font-size: $size-18;
+}
+
+.font-20 {
+  font-size: $size-20;
+}
+
+.font-22 {
+  font-size: $size-22;
+}
+
+.font-24 {
+  font-size: $size-25;
+}
+
+.font-24 {
+  font-size: $size-24;
+}
+
+.font-26 {
+  font-size: $size-26;
+}
+
+.font-30 {
+  font-size: $size-30;
+}
+
+// WEIGHT
+.font-400 {
+  font-weight: 400;
+}
+
+.font-500 {
+  font-weight: 500;
+}
+
+.font-600 {
+  font-weight: 600;
+}
+
+.font-700 {
+  font-weight: 700;
+}
+
+
+// Facilitadores para aplicar a font
+.font-subtitulo {
+  font-weight: 500;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.font-titulo {
+  font-size: 2rem;
+  font-weight: 600;
+  position: relative;
+  margin-bottom: 1rem;
+
+
+  &:after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: -$size-5;
+    height: $size-4;
+    width: 3rem;
+    background-color: $cor-secundaria;
+  }
+}
+
+.font-subtitulo {
+  font-size: 1rem;
+  font-weight: 600;
+  position: relative;
+  margin-bottom: 1rem;
+
+
+  // &:after {
+  //   content: '';
+  //   position: absolute;
+  //   left: 50%;
+  //   transform: translateX(-50%);
+  //   bottom: -$size-5;
+  //   height: $size-4;
+  //   width: 2rem;
+  //   background-color: $cor-secundaria;
+  // }
+}
+
+.titulo,
+.titulo-sublinhado {
+  font-size: 1.5rem;
+  font-weight: 600;
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.cor-vermelho {
+  color: $cor-vermelho;
+}
+
+.titulo-sublinhado {
+  &:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -$size-5;
+    height: $size-4;
+    width: 3rem;
+    background-color: $cor-principal;
+  }
+}
+
+.subtitulo-sublinhado {
+  font-size: 1.2rem;
+  font-weight: 600;
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.subtitulo-sublinhado {
+  &:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -$size-5;
+    height: $size-4;
+    width: 3rem;
+    background-color: $cor-secundaria;
+  }
+}
+
+// Card
+.card {
+  box-shadow: -$size-5 -$size-5 $size-9 rgb(255 255 255 / 45%), $size-5 $size-5 $size-9 rgb(94 104 121 / 30%);
+  background: $cor-branco;
+  border-radius: $radius;
+  padding: 3rem;
+}
+
+// Cores
+.cor-primaria {
+  color: $cor-texto;
+}
+
+.cor-secundaria {
+  color: $cor-secundaria;
+}
+
+.cor-terciaria {
+  color: $cor-terciaria;
+}
+
+.cor-amarelo {
+  color: $cor-amarelo;
+}
+
+.cor-cinza-claro {
+  color: $cor-cinza-claro;
+}
+
+.cor-cinza-opaco {
+  color: $cor-cinza-opaco;
+}
+
+.cursor-default {
+  cursor: default;
+}
+
+
+// texto underline
+.text-underline {
+  text-decoration: underline;
+}
+
+.rotate-180 {
+  transform: rotate(180deg);
+}
+
+.circle{
+  border-radius: 50%;
+  height: 1rem;
+  width: 1rem;
+
+  &.status-ativo {
+    background-color: $cor-verde;
+  }
+
+  &.status-inativo {
+    background-color: $cor-vermelho;
+  }
+}
+
+.centraliza-flex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.width-10 {
+  width: 10rem;
+}
+
+.position-relative {
+  position: relative;
+}
+
+.radius-0 {
+  border-radius: 0 !important;
+}
+
+.fake-label {
+  text-transform: uppercase;
+  color: var(--cor-principal);
+  font-size: 0.8125rem;
+  margin-bottom: 0.3125rem;
+  font-weight: 500;
+}
+
+.remaining-characters, .remaining-characters-invalid {
+  display: flex;
+  justify-content: flex-end;
+  font-size: $size-12;
+}
+
+.remaining-characters-invalid {
+  color: $cor-vermelho;
+}
+
+ngx-dropzone-preview, ngx-dropzone-image-preview {
+  margin: 0 auto !important;
+}
+
+.content-error {
+  position: relative;
+  height: 2rem;
+
+  .invalid {
+    color: $cor-vermelho;
+    position: absolute;
+    right: 0;
+  }
+}

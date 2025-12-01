@@ -1,0 +1,38 @@
+@use '@angular/material' as mat;
+
+html {
+  color-scheme: light;
+  @include mat.theme(
+    (
+      color: mat.$violet-palette,
+      typography: (
+        plain-family: '"Poppins", sans-serif',
+      ),
+      density: 0,
+    )
+  );
+}
+
+:root {
+  @include mat.snack-bar-overrides((
+    container-color: white,
+  ));
+}
+
+.material-symbols-outlined {
+  font-size: 1rem;
+  color: black;
+}
+
+.mdc-snackbar__label{
+  padding: 10px 10px !important;
+}
+
+
+.mat-mdc-form-field-hint-wrapper, .mat-mdc-form-field-error-wrapper {
+  padding: 0 !important;
+}
+
+.mat-mdc-form-field {
+  display: block !important;
+}

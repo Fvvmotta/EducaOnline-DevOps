@@ -1,0 +1,448 @@
+{
+  "apps/educa-online": {
+    "root": [
+      "apps/educa-online/project.json",
+      "nx/core/project-json"
+    ],
+    "name": [
+      "apps/educa-online/project.json",
+      "nx/core/project-json"
+    ],
+    "$schema": [
+      "apps/educa-online/project.json",
+      "nx/core/project-json"
+    ],
+    "projectType": [
+      "apps/educa-online/project.json",
+      "nx/core/project-json"
+    ],
+    "prefix": [
+      "apps/educa-online/project.json",
+      "nx/core/project-json"
+    ],
+    "sourceRoot": [
+      "apps/educa-online/project.json",
+      "nx/core/project-json"
+    ],
+    "tags": [
+      "apps/educa-online/project.json",
+      "nx/core/project-json"
+    ],
+    "targets": [
+      "apps/educa-online/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build": [
+      "apps/educa-online/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.executor": [
+      "apps/educa-online/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.outputs": [
+      "apps/educa-online/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options": [
+      "apps/educa-online/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.configurations": [
+      "apps/educa-online/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.defaultConfiguration": [
+      "apps/educa-online/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.outputPath": [
+      "apps/educa-online/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.browser": [
+      "apps/educa-online/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.polyfills": [
+      "apps/educa-online/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.tsConfig": [
+      "apps/educa-online/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.inlineStyleLanguage": [
+      "apps/educa-online/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.assets": [
+      "apps/educa-online/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.styles": [
+      "apps/educa-online/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.configurations.production": [
+      "apps/educa-online/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.configurations.production.budgets": [
+      "apps/educa-online/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.configurations.production.outputHashing": [
+      "apps/educa-online/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.configurations.development": [
+      "apps/educa-online/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.configurations.development.optimization": [
+      "apps/educa-online/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.configurations.development.extractLicenses": [
+      "apps/educa-online/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.configurations.development.sourceMap": [
+      "apps/educa-online/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve": [
+      "apps/educa-online/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.continuous": [
+      "apps/educa-online/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.executor": [
+      "apps/educa-online/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.configurations": [
+      "apps/educa-online/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.defaultConfiguration": [
+      "apps/educa-online/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.configurations.production": [
+      "apps/educa-online/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.configurations.production.buildTarget": [
+      "apps/educa-online/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.configurations.development": [
+      "apps/educa-online/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.configurations.development.buildTarget": [
+      "apps/educa-online/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.extract-i18n": [
+      "apps/educa-online/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.extract-i18n.executor": [
+      "apps/educa-online/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.extract-i18n.options": [
+      "apps/educa-online/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.extract-i18n.options.buildTarget": [
+      "apps/educa-online/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint": [
+      "apps/educa-online/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.executor": [
+      "apps/educa-online/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve-static": [
+      "apps/educa-online/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve-static.continuous": [
+      "apps/educa-online/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve-static.executor": [
+      "apps/educa-online/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve-static.options": [
+      "apps/educa-online/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve-static.options.buildTarget": [
+      "apps/educa-online/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve-static.options.staticFilePath": [
+      "apps/educa-online/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve-static.options.spa": [
+      "apps/educa-online/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.cache": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.build.dependsOn": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.build.inputs": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.build.parallelism": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.lint.cache": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.lint.inputs": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.lint.parallelism": [
+      "nx.json",
+      "nx/target-defaults"
+    ]
+  },
+  "libs/components": {
+    "root": [
+      "libs/components/project.json",
+      "nx/core/project-json"
+    ],
+    "name": [
+      "libs/components/project.json",
+      "nx/core/project-json"
+    ],
+    "$schema": [
+      "libs/components/project.json",
+      "nx/core/project-json"
+    ],
+    "sourceRoot": [
+      "libs/components/project.json",
+      "nx/core/project-json"
+    ],
+    "prefix": [
+      "libs/components/project.json",
+      "nx/core/project-json"
+    ],
+    "projectType": [
+      "libs/components/project.json",
+      "nx/core/project-json"
+    ],
+    "tags": [
+      "libs/components/project.json",
+      "nx/core/project-json"
+    ],
+    "targets": [
+      "libs/components/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint": [
+      "libs/components/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.executor": [
+      "libs/components/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.cache": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.lint.inputs": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.lint.parallelism": [
+      "nx.json",
+      "nx/target-defaults"
+    ]
+  },
+  "libs/data": {
+    "root": [
+      "libs/data/project.json",
+      "nx/core/project-json"
+    ],
+    "name": [
+      "libs/data/project.json",
+      "nx/core/project-json"
+    ],
+    "$schema": [
+      "libs/data/project.json",
+      "nx/core/project-json"
+    ],
+    "sourceRoot": [
+      "libs/data/project.json",
+      "nx/core/project-json"
+    ],
+    "prefix": [
+      "libs/data/project.json",
+      "nx/core/project-json"
+    ],
+    "projectType": [
+      "libs/data/project.json",
+      "nx/core/project-json"
+    ],
+    "tags": [
+      "libs/data/project.json",
+      "nx/core/project-json"
+    ],
+    "targets": [
+      "libs/data/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint": [
+      "libs/data/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.executor": [
+      "libs/data/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.cache": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.lint.inputs": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.lint.parallelism": [
+      "nx.json",
+      "nx/target-defaults"
+    ]
+  },
+  "libs/forms": {
+    "root": [
+      "libs/forms/project.json",
+      "nx/core/project-json"
+    ],
+    "name": [
+      "libs/forms/project.json",
+      "nx/core/project-json"
+    ],
+    "$schema": [
+      "libs/forms/project.json",
+      "nx/core/project-json"
+    ],
+    "sourceRoot": [
+      "libs/forms/project.json",
+      "nx/core/project-json"
+    ],
+    "prefix": [
+      "libs/forms/project.json",
+      "nx/core/project-json"
+    ],
+    "projectType": [
+      "libs/forms/project.json",
+      "nx/core/project-json"
+    ],
+    "tags": [
+      "libs/forms/project.json",
+      "nx/core/project-json"
+    ],
+    "targets": [
+      "libs/forms/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint": [
+      "libs/forms/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.executor": [
+      "libs/forms/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.cache": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.lint.inputs": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.lint.parallelism": [
+      "nx.json",
+      "nx/target-defaults"
+    ]
+  },
+  "libs/services": {
+    "root": [
+      "libs/services/project.json",
+      "nx/core/project-json"
+    ],
+    "name": [
+      "libs/services/project.json",
+      "nx/core/project-json"
+    ],
+    "$schema": [
+      "libs/services/project.json",
+      "nx/core/project-json"
+    ],
+    "sourceRoot": [
+      "libs/services/project.json",
+      "nx/core/project-json"
+    ],
+    "prefix": [
+      "libs/services/project.json",
+      "nx/core/project-json"
+    ],
+    "projectType": [
+      "libs/services/project.json",
+      "nx/core/project-json"
+    ],
+    "tags": [
+      "libs/services/project.json",
+      "nx/core/project-json"
+    ],
+    "targets": [
+      "libs/services/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint": [
+      "libs/services/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.executor": [
+      "libs/services/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.lint.cache": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.lint.inputs": [
+      "nx.json",
+      "nx/target-defaults"
+    ],
+    "targets.lint.parallelism": [
+      "nx.json",
+      "nx/target-defaults"
+    ]
+  }
+}

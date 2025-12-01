@@ -1,0 +1,68 @@
+<div class="card-container">
+    <div class="course-card">
+        <img src="https://dummyimage.com/337x160/000/8714FA&text={{curso?.nome}}" alt="{{ curso?.nome }}" />
+        <h3>{{ curso?.nome }}</h3>
+
+        @if (curso?.conteudoProgramatico) {
+            <p>{{ curso?.conteudoProgramatico?.descricao }}</p>
+            <p class="my-2"><b>{{ curso?.conteudoProgramatico?.titulo }}</b></p>
+            <p><b>Objetivos:</b> {{ curso?.conteudoProgramatico?.objetivos }}</p>
+
+            <div class="d-flex justify-content-between mt-3">
+                <p><b>Carga horária:</b> {{ curso?.conteudoProgramatico?.cargaHoraria }} horas</p>
+                <p><b>Aulas:</b> {{ curso?.aulas?.length }} aula(s)</p>
+            </div>
+        }
+
+        <p class="mt-3"><b>Valor:</b> {{curso?.valor | currency:'BRL':'symbol':'1.2-2':'pt-BR'}}</p>
+    </div>
+</div>
+
+<div class="card-container mt-3" [formGroup]="formCartao">
+    <div class="card">
+        <div class="row">
+            <div class="col-12">
+                <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Número do cartão</mat-label>
+                    <input type="text" matInput formControlName="numeroCartao" mask="0000 0000 0000 0000">
+                    @if (formCartao.get('numeroCartao')?.hasError('required')) {
+                    <mat-error>Número do cartão <strong>obrigatório</strong></mat-error>
+                    }
+                </mat-form-field>
+            </div>
+            <div class="col-12 my-2">
+                <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Nome no cartão</mat-label>
+                    <input type="text" matInput formControlName="nomeCartao">
+                    @if (formCartao.get('nomeCartao')?.hasError('required')) {
+                    <mat-error>Nome do cartão <strong>obrigatório</strong></mat-error>
+                    }
+                </mat-form-field>
+            </div>
+
+            <div class="col-6">
+
+                <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Expiração:</mat-label>
+                    <input type="text" matInput formControlName="expiracaoCartao" placeholder="MM/AA" mask="00/00">
+                    @if (formCartao.get('expiracaoCartao')?.hasError('required')) {
+                    <mat-error>Expiração do cartão <strong>obrigatório</strong></mat-error>
+                    }
+                </mat-form-field>
+            </div>
+            <div class="col-6">
+                <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>CCV: </mat-label>
+                    <input type="text" matInput formControlName="ccvCartao" mask="0000">
+                    @if (formCartao.get('ccvCartao')?.hasError('required')) {
+                    <mat-error>CCV <strong>obrigatório</strong></mat-error>
+                    }
+                </mat-form-field>
+            </div>
+
+            <div class="col-12 d-flex justify-content-end">
+                <button mat-raised-button (click)="realizarPagamento()">Realizar pagamento</button>
+            </div>
+        </div>
+    </div>
+</div>

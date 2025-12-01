@@ -1,0 +1,62 @@
+$break-mobile: 544px;
+$break-tablet: 768px;
+$break-phablet: 992px;
+$break-desktop: 1200px;
+$break-desktop-hd: 1400px;
+$break-desktop-full-hd: 1920px;
+
+$cor-input: #EFEBFD;
+$cor-principal: var(--cor-principal);
+$cor-principal-opaca: hsl(var(--cor-principal-h), var(--cor-principal-s), 40%);
+
+$cor-secundaria: var(--cor-secundaria);;
+$cor-terciaria: var(--cor-terciaria);;
+
+$cor-cinza: #888888;
+$cor-cinza-claro: #E7E7E7;
+$cor-cinza-opaco: #6F767E;
+$cor-cinza-bg: #F8F8F8;
+
+$cor-amarelo: #ffa836;
+$cor-vermelho: #F44336;
+$cor-verde: #4CAF50;
+$cor-verde-opaco: #EFF7EE;
+$cor-azul: #2196F3;
+$cor-preta:  #071016;
+
+$cor-texto: #15102E;
+$cor-texto-claro: rgba(0, 0, 0, 0.6);
+$cor-texto-btn: #424341;
+$cor-branco: #ffffff;
+
+$size-1: .0625rem;
+$size-2: .125rem;
+$size-3: .1875rem;
+$size-4: .25rem;
+$size-5: .3125rem;
+$size-6: .375rem;
+$size-7: .4375rem;
+$size-8: .5rem;
+$size-9: .5625rem;
+$size-10: .625rem;
+$size-11: .6875rem;
+$size-12: .75rem;
+$size-13: .8125rem;
+$size-14: .875rem;
+$size-15: .9375rem;
+$size-16: 1rem;
+$size-17: 1.0625rem;
+$size-18: 1.125rem;
+$size-20: 1.25rem;
+$size-22: 1.375rem;
+$size-24: 1.5rem;
+$size-25: 1.5625rem;
+$size-26: 1.625rem;
+$size-28: 1.75rem;
+$size-30: 1.875rem;
+
+$radius: $size-6;
+
+$largura-menu: 19.5rem;
+$bg-input-disabled: #f0f0f0;
+$bg-telas: #fcfcfc;

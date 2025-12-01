@@ -1,0 +1,50 @@
+<header class="header">
+    <div class="overlay">
+        <div class="header-content">
+            <h1 class="logo">Educa Online</h1>
+
+            <div class="user-area">
+                @if (usuario) {
+                <span class="welcome cursor-pointer" (click)="redirectToPanel()">Painel</span>
+                <span class="welcome me-3">Olá, {{ usuario.nome }} 👋</span>
+
+                } @else {
+                <button class="login-btn" (click)="redirectToLogin()">Entrar</button>
+                }
+            </div>
+        </div>
+
+        <p class="subtitle">Aprenda no seu ritmo. Conquiste o seu futuro.</p>
+    </div>
+</header>
+
+<main class="container">
+    <h2>Cursos disponíveis</h2>
+
+    <div class="courses">
+        @for (curso of cursos; track $index) {
+        <div class="course-card">
+            <img src="https://dummyimage.com/337x160/000/8714FA&text={{curso.nome}}" alt="{{ curso.nome }}" />
+            <h3>{{ curso.nome }}</h3>
+
+            @if (curso.conteudoProgramatico) {
+            <p>{{ curso.conteudoProgramatico.descricao }}</p>
+            <p class="my-2"><b>{{ curso.conteudoProgramatico.titulo }}</b></p>
+            <p><b>Objetivos:</b> {{ curso.conteudoProgramatico.objetivos }}</p>
+
+            <div class="d-flex justify-content-between mt-3">
+                <p><b>Carga horária:</b> {{ curso.conteudoProgramatico.cargaHoraria }} horas</p>
+                <p><b>Aulas:</b> {{ curso.aulas.length }} aula(s)</p>
+            </div>
+            }
+
+            @if (!role || role == 'ALUNO') {
+                <div class="d-flex justify-content-center">
+                    <button (click)="redirectToLogin(true, curso.id)">Matricular-se</button>
+                </div>
+            }
+        </div>
+        }
+
+    </div>
+</main>

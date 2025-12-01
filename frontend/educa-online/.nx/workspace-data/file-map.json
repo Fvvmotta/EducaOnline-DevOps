@@ -1,0 +1,972 @@
+{
+  "version": "6.0",
+  "nxVersion": "21.5.3",
+  "pathMappings": {
+    "@educa-online/components": [
+      "libs/components/src/index.ts"
+    ],
+    "@educa-online/data": [
+      "libs/data/src/index.ts"
+    ],
+    "@educa-online/forms": [
+      "libs/forms/src/index.ts"
+    ],
+    "@educa-online/services": [
+      "libs/services/src/index.ts"
+    ]
+  },
+  "nxJsonPlugins": [],
+  "fileMap": {
+    "nonProjectFiles": [
+      {
+        "file": "tsconfig.base.json",
+        "hash": "13031635350642770316"
+      },
+      {
+        "file": ".gitignore",
+        "hash": "17559216753634855455"
+      },
+      {
+        "file": "error.log",
+        "hash": "7804480226111769274"
+      },
+      {
+        "file": ".prettierignore",
+        "hash": "5407418692668764289"
+      },
+      {
+        "file": ".vscode/extensions.json",
+        "hash": "16884713733442577066"
+      },
+      {
+        "file": "nx.json",
+        "hash": "16869898472768612599"
+      },
+      {
+        "file": "package-lock.json",
+        "hash": "3240267448811866129"
+      },
+      {
+        "file": "package.json",
+        "hash": "13403823589506181171"
+      },
+      {
+        "file": "README.md",
+        "hash": "6475790755765384340"
+      },
+      {
+        "file": ".editorconfig",
+        "hash": "5443105041930014821"
+      },
+      {
+        "file": "eslint.config.mjs",
+        "hash": "10770449096712831357"
+      },
+      {
+        "file": ".prettierrc",
+        "hash": "16267754514737964994"
+      },
+      {
+        "file": ".github/workflows/ci.yml",
+        "hash": "13063873724454772279"
+      }
+    ],
+    "projectFileMap": {
+      "data": [
+        {
+          "file": "libs/data/README.md",
+          "hash": "16910729337746887824"
+        },
+        {
+          "file": "libs/data/eslint.config.mjs",
+          "hash": "805488336937133967",
+          "deps": [
+            "npm:@nx/eslint-plugin"
+          ]
+        },
+        {
+          "file": "libs/data/project.json",
+          "hash": "9300856824598592762"
+        },
+        {
+          "file": "libs/data/src/index.ts",
+          "hash": "9313597738538708816"
+        },
+        {
+          "file": "libs/data/src/lib/auth/index.ts",
+          "hash": "8764353753077488691"
+        },
+        {
+          "file": "libs/data/src/lib/auth/jwt-payload.model.ts",
+          "hash": "6814637686986317043"
+        },
+        {
+          "file": "libs/data/src/lib/auth/login.model.ts",
+          "hash": "5543785634901024063"
+        },
+        {
+          "file": "libs/data/src/lib/auth/nova-conta.model.ts",
+          "hash": "8011430898908942486"
+        },
+        {
+          "file": "libs/data/src/lib/conteudo/aula.model.ts",
+          "hash": "2292601435613346379"
+        },
+        {
+          "file": "libs/data/src/lib/conteudo/curso.model.ts",
+          "hash": "3218696224007032682"
+        },
+        {
+          "file": "libs/data/src/lib/conteudo/index.ts",
+          "hash": "2743554819076495264"
+        },
+        {
+          "file": "libs/data/tsconfig.json",
+          "hash": "17716510827809371820"
+        },
+        {
+          "file": "libs/data/tsconfig.lib.json",
+          "hash": "826380279380587436"
+        }
+      ],
+      "educa-online": [
+        {
+          "file": "apps/educa-online/eslint.config.mjs",
+          "hash": "16756400681144203361",
+          "deps": [
+            "npm:@nx/eslint-plugin"
+          ]
+        },
+        {
+          "file": "apps/educa-online/project.json",
+          "hash": "469211909877516020"
+        },
+        {
+          "file": "apps/educa-online/public/favicon.ico",
+          "hash": "9303420814833116677"
+        },
+        {
+          "file": "apps/educa-online/src/app/app.component.html",
+          "hash": "17816966185630879015"
+        },
+        {
+          "file": "apps/educa-online/src/app/app.component.scss",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "apps/educa-online/src/app/app.component.ts",
+          "hash": "1216629289431043931",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/router",
+            "npm:@angular/common",
+            "npm:@angular/material",
+            "services",
+            "components",
+            "npm:rxjs"
+          ]
+        },
+        {
+          "file": "apps/educa-online/src/app/app.config.ts",
+          "hash": "5938756518713205028",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/platform-browser",
+            "npm:@angular/router",
+            "npm:@angular/common",
+            "components",
+            "services",
+            "npm:ngx-mask"
+          ]
+        },
+        {
+          "file": "apps/educa-online/src/app/app.routes.ts",
+          "hash": "2667364136768144396",
+          "deps": [
+            "npm:@angular/router"
+          ]
+        },
+        {
+          "file": "apps/educa-online/src/app/authenticated/authenticated.component.html",
+          "hash": "18255786415004899019"
+        },
+        {
+          "file": "apps/educa-online/src/app/authenticated/authenticated.component.scss",
+          "hash": "12360011449286975432"
+        },
+        {
+          "file": "apps/educa-online/src/app/authenticated/authenticated.component.ts",
+          "hash": "13250120271020928343",
+          "deps": [
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "apps/educa-online/src/app/authenticated/authenticated.module.ts",
+          "hash": "16803783995825628944",
+          "deps": [
+            "npm:@angular/common",
+            "npm:@angular/core",
+            "npm:@angular/router",
+            "components"
+          ]
+        },
+        {
+          "file": "apps/educa-online/src/app/authenticated/authenticated.routing.ts",
+          "hash": "17230992896560404096",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/router"
+          ]
+        },
+        {
+          "file": "apps/educa-online/src/app/authenticated/curso/create-edit-aula/create-edit-aula.component.html",
+          "hash": "6315631046312607155"
+        },
+        {
+          "file": "apps/educa-online/src/app/authenticated/curso/create-edit-aula/create-edit-aula.component.scss",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "apps/educa-online/src/app/authenticated/curso/create-edit-aula/create-edit-aula.component.ts",
+          "hash": "6558886222632100592",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/material",
+            "data",
+            "forms",
+            "services",
+            "npm:rxjs"
+          ]
+        },
+        {
+          "file": "apps/educa-online/src/app/authenticated/curso/create-edit-curso/create-edit-curso.component.html",
+          "hash": "8162442292492244876"
+        },
+        {
+          "file": "apps/educa-online/src/app/authenticated/curso/create-edit-curso/create-edit-curso.component.scss",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "apps/educa-online/src/app/authenticated/curso/create-edit-curso/create-edit-curso.component.ts",
+          "hash": "14873250037837953714",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/material",
+            "forms",
+            "services",
+            "npm:rxjs"
+          ]
+        },
+        {
+          "file": "apps/educa-online/src/app/authenticated/curso/curso.component.ts",
+          "hash": "1743867198897966033",
+          "deps": [
+            "npm:@angular/core",
+            "services"
+          ]
+        },
+        {
+          "file": "apps/educa-online/src/app/authenticated/curso/curso.module.ts",
+          "hash": "16717138801697536555",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/material",
+            "npm:@angular/forms",
+            "forms",
+            "services"
+          ]
+        },
+        {
+          "file": "apps/educa-online/src/app/authenticated/curso/curso.routing.ts",
+          "hash": "6976743638584811580",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/router"
+          ]
+        },
+        {
+          "file": "apps/educa-online/src/app/authenticated/curso/lista-aula/lista-aula.component.html",
+          "hash": "12288398560293286455"
+        },
+        {
+          "file": "apps/educa-online/src/app/authenticated/curso/lista-aula/lista-aula.component.scss",
+          "hash": "15561857387327109452"
+        },
+        {
+          "file": "apps/educa-online/src/app/authenticated/curso/lista-aula/lista-aula.component.ts",
+          "hash": "7927638385587596984",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/material",
+            "npm:rxjs",
+            "services",
+            "data",
+            "npm:@angular/router",
+            "components"
+          ]
+        },
+        {
+          "file": "apps/educa-online/src/app/authenticated/curso/lista-curso/lista-curso.component.html",
+          "hash": "14756200814338012715"
+        },
+        {
+          "file": "apps/educa-online/src/app/authenticated/curso/lista-curso/lista-curso.component.scss",
+          "hash": "10562890171754100602"
+        },
+        {
+          "file": "apps/educa-online/src/app/authenticated/curso/lista-curso/lista-curso.component.ts",
+          "hash": "11513322315612393666",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/material",
+            "npm:rxjs",
+            "components",
+            "services",
+            "data",
+            "npm:@angular/router"
+          ]
+        },
+        {
+          "file": "apps/educa-online/src/app/authenticated/inicio/dashboard/dashboard.component.html",
+          "hash": "10347686436572151517"
+        },
+        {
+          "file": "apps/educa-online/src/app/authenticated/inicio/dashboard/dashboard.component.scss",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "apps/educa-online/src/app/authenticated/inicio/dashboard/dashboard.component.ts",
+          "hash": "6581628548431794961",
+          "deps": [
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "apps/educa-online/src/app/authenticated/inicio/inicio.component.ts",
+          "hash": "7706345687576892024",
+          "deps": [
+            "npm:@angular/core",
+            "services"
+          ]
+        },
+        {
+          "file": "apps/educa-online/src/app/authenticated/inicio/inicio.module.ts",
+          "hash": "2197694516792343739",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/material",
+            "npm:@angular/forms",
+            "npm:@angular/common"
+          ]
+        },
+        {
+          "file": "apps/educa-online/src/app/authenticated/inicio/inicio.routing.ts",
+          "hash": "11442527634029111434",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/router"
+          ]
+        },
+        {
+          "file": "apps/educa-online/src/app/authenticated/usuario/lista-usuario/lista-usuario.component.html",
+          "hash": "4806167122770863737"
+        },
+        {
+          "file": "apps/educa-online/src/app/authenticated/usuario/lista-usuario/lista-usuario.component.scss",
+          "hash": "5410862701918401573"
+        },
+        {
+          "file": "apps/educa-online/src/app/authenticated/usuario/lista-usuario/lista-usuario.component.ts",
+          "hash": "16839642519136455935",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/material"
+          ]
+        },
+        {
+          "file": "apps/educa-online/src/app/authenticated/usuario/usuario.component.ts",
+          "hash": "5686623636206624398",
+          "deps": [
+            "npm:@angular/core",
+            "services"
+          ]
+        },
+        {
+          "file": "apps/educa-online/src/app/authenticated/usuario/usuario.module.ts",
+          "hash": "7393843901576641858",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/forms",
+            "npm:@angular/material",
+            "forms"
+          ]
+        },
+        {
+          "file": "apps/educa-online/src/app/authenticated/usuario/usuario.routing.ts",
+          "hash": "12399202335202709779",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/router"
+          ]
+        },
+        {
+          "file": "apps/educa-online/src/app/guards/authenticated.guard.ts",
+          "hash": "4436569736411141276",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/router",
+            "services",
+            "npm:rxjs"
+          ]
+        },
+        {
+          "file": "apps/educa-online/src/app/guards/login.guard.ts",
+          "hash": "8333959431085325519",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/router",
+            "services",
+            "npm:rxjs"
+          ]
+        },
+        {
+          "file": "apps/educa-online/src/app/public/login/form-login/form-login.component.html",
+          "hash": "8803476517657343199"
+        },
+        {
+          "file": "apps/educa-online/src/app/public/login/form-login/form-login.component.scss",
+          "hash": "10506895750582267507"
+        },
+        {
+          "file": "apps/educa-online/src/app/public/login/form-login/form-login.component.ts",
+          "hash": "2695875067475739650",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/forms",
+            "npm:@angular/material",
+            "npm:@angular/router",
+            "components",
+            "services",
+            "npm:rxjs"
+          ]
+        },
+        {
+          "file": "apps/educa-online/src/app/public/login/form-nova-conta/form-nova-conta.component.html",
+          "hash": "4695714550012221300"
+        },
+        {
+          "file": "apps/educa-online/src/app/public/login/form-nova-conta/form-nova-conta.component.scss",
+          "hash": "6726509304672666730"
+        },
+        {
+          "file": "apps/educa-online/src/app/public/login/form-nova-conta/form-nova-conta.component.ts",
+          "hash": "6534507814503670756",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/material",
+            "npm:@angular/router",
+            "components",
+            "forms",
+            "services",
+            "npm:rxjs"
+          ]
+        },
+        {
+          "file": "apps/educa-online/src/app/public/login/login.component.html",
+          "hash": "11325115587184062366"
+        },
+        {
+          "file": "apps/educa-online/src/app/public/login/login.component.scss",
+          "hash": "14938458036362221186"
+        },
+        {
+          "file": "apps/educa-online/src/app/public/login/login.component.ts",
+          "hash": "11330460011012683166",
+          "deps": [
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "apps/educa-online/src/app/public/login/login.module.ts",
+          "hash": "7446676769015417649",
+          "deps": [
+            "npm:@angular/material",
+            "npm:@angular/core",
+            "npm:@angular/forms",
+            "forms",
+            "npm:ngx-mask"
+          ]
+        },
+        {
+          "file": "apps/educa-online/src/app/public/login/login.routing.ts",
+          "hash": "3268391575156291587",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/router"
+          ]
+        },
+        {
+          "file": "apps/educa-online/src/app/public/public.component.ts",
+          "hash": "18102322882817422130",
+          "deps": [
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "apps/educa-online/src/app/public/public.module.ts",
+          "hash": "9704824422677433917",
+          "deps": [
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "apps/educa-online/src/app/public/public.routing.ts",
+          "hash": "8810388808167434066",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/router"
+          ]
+        },
+        {
+          "file": "apps/educa-online/src/assets/imgs/login.png",
+          "hash": "18160798546861459916"
+        },
+        {
+          "file": "apps/educa-online/src/assets/scss/_alert.scss",
+          "hash": "15166179174050146968"
+        },
+        {
+          "file": "apps/educa-online/src/assets/scss/_main.scss",
+          "hash": "2570948670324019889"
+        },
+        {
+          "file": "apps/educa-online/src/assets/scss/_mixins.scss",
+          "hash": "8008828237679091915"
+        },
+        {
+          "file": "apps/educa-online/src/assets/scss/_modal.scss",
+          "hash": "4598510417071959022"
+        },
+        {
+          "file": "apps/educa-online/src/assets/scss/_reset.scss",
+          "hash": "18119456583268587955"
+        },
+        {
+          "file": "apps/educa-online/src/assets/scss/_utils.scss",
+          "hash": "7827216259249520338"
+        },
+        {
+          "file": "apps/educa-online/src/assets/scss/_variables.scss",
+          "hash": "6511547389105934548"
+        },
+        {
+          "file": "apps/educa-online/src/assets/scss/themes/custom-theme.scss",
+          "hash": "17434807071412076425"
+        },
+        {
+          "file": "apps/educa-online/src/assets/scss/vendor/_bootstrap-grid.scss",
+          "hash": "5767063055520469216"
+        },
+        {
+          "file": "apps/educa-online/src/assets/scss/vendor/_material-table.scss",
+          "hash": "6997795649213593031"
+        },
+        {
+          "file": "apps/educa-online/src/index.html",
+          "hash": "7997105703949451336"
+        },
+        {
+          "file": "apps/educa-online/src/main.ts",
+          "hash": "2633615247295277217",
+          "deps": [
+            "npm:@angular/platform-browser"
+          ]
+        },
+        {
+          "file": "apps/educa-online/src/styles.scss",
+          "hash": "14932569276956834334"
+        },
+        {
+          "file": "apps/educa-online/tsconfig.app.json",
+          "hash": "10974451356376189872"
+        },
+        {
+          "file": "apps/educa-online/tsconfig.json",
+          "hash": "13896577289209880447"
+        }
+      ],
+      "forms": [
+        {
+          "file": "libs/forms/README.md",
+          "hash": "10719777546323076491"
+        },
+        {
+          "file": "libs/forms/eslint.config.mjs",
+          "hash": "805488336937133967",
+          "deps": [
+            "npm:@nx/eslint-plugin"
+          ]
+        },
+        {
+          "file": "libs/forms/project.json",
+          "hash": "16412177996702863852"
+        },
+        {
+          "file": "libs/forms/src/index.ts",
+          "hash": "16068869349140436477"
+        },
+        {
+          "file": "libs/forms/src/lib/auth/index.ts",
+          "hash": "7142081911169640581"
+        },
+        {
+          "file": "libs/forms/src/lib/auth/nova-conta.form.ts",
+          "hash": "7137533145664974465",
+          "deps": [
+            "npm:@angular/forms"
+          ]
+        },
+        {
+          "file": "libs/forms/src/lib/curso/aula.form.ts",
+          "hash": "3783026575897361115",
+          "deps": [
+            "npm:@angular/forms"
+          ]
+        },
+        {
+          "file": "libs/forms/src/lib/curso/curso.form.ts",
+          "hash": "13401860669615010817",
+          "deps": [
+            "npm:@angular/forms"
+          ]
+        },
+        {
+          "file": "libs/forms/src/lib/curso/index.ts",
+          "hash": "4069202554823183401"
+        },
+        {
+          "file": "libs/forms/src/lib/endereco.form.ts",
+          "hash": "10624005200804774390",
+          "deps": [
+            "npm:@angular/forms"
+          ]
+        },
+        {
+          "file": "libs/forms/src/lib/form.base.ts",
+          "hash": "17799892774928092487",
+          "deps": [
+            "npm:@angular/forms",
+            "npm:rxjs"
+          ]
+        },
+        {
+          "file": "libs/forms/src/lib/validation-message.pipe.ts",
+          "hash": "6906715518767968307",
+          "deps": [
+            "npm:@angular/core"
+          ]
+        },
+        {
+          "file": "libs/forms/src/lib/validators/index.ts",
+          "hash": "17921274236988058526"
+        },
+        {
+          "file": "libs/forms/src/lib/validators/password-match.ts",
+          "hash": "11028499177029038472",
+          "deps": [
+            "npm:@angular/forms"
+          ]
+        },
+        {
+          "file": "libs/forms/tsconfig.json",
+          "hash": "17716510827809371820"
+        },
+        {
+          "file": "libs/forms/tsconfig.lib.json",
+          "hash": "826380279380587436"
+        }
+      ],
+      "services": [
+        {
+          "file": "libs/services/README.md",
+          "hash": "11577662365127462531"
+        },
+        {
+          "file": "libs/services/eslint.config.mjs",
+          "hash": "805488336937133967",
+          "deps": [
+            "npm:@nx/eslint-plugin"
+          ]
+        },
+        {
+          "file": "libs/services/project.json",
+          "hash": "3259871827048102822"
+        },
+        {
+          "file": "libs/services/src/index.ts",
+          "hash": "9290783268295852412"
+        },
+        {
+          "file": "libs/services/src/lib/configuration/environment.ts",
+          "hash": "15875886355589174209"
+        },
+        {
+          "file": "libs/services/src/lib/configuration/index.ts",
+          "hash": "2651150541827828564"
+        },
+        {
+          "file": "libs/services/src/lib/http/auth.service.ts",
+          "hash": "16290543609720672079",
+          "deps": [
+            "npm:@angular/common",
+            "npm:@angular/core",
+            "npm:@angular/router",
+            "npm:rxjs",
+            "data",
+            "npm:jwt-decode"
+          ]
+        },
+        {
+          "file": "libs/services/src/lib/http/conteudo.service.ts",
+          "hash": "3192768500493457697",
+          "deps": [
+            "npm:@angular/common",
+            "npm:@angular/core",
+            "npm:rxjs",
+            "data"
+          ]
+        },
+        {
+          "file": "libs/services/src/lib/http/index.ts",
+          "hash": "17202274943326812892"
+        },
+        {
+          "file": "libs/services/src/lib/index.ts",
+          "hash": "11727474347721987967"
+        },
+        {
+          "file": "libs/services/src/lib/interceptors/error-handler.ts",
+          "hash": "4846712191748104399",
+          "deps": [
+            "npm:@angular/core",
+            "npm:rxjs"
+          ]
+        },
+        {
+          "file": "libs/services/src/lib/interceptors/index.ts",
+          "hash": "4982308558593229404"
+        },
+        {
+          "file": "libs/services/src/lib/interceptors/token.interceptor.ts",
+          "hash": "2857424435074376439",
+          "deps": [
+            "npm:@angular/common",
+            "npm:@angular/core",
+            "npm:rxjs"
+          ]
+        },
+        {
+          "file": "libs/services/src/lib/utils/header.service.ts",
+          "hash": "1171619908309752671",
+          "deps": [
+            "npm:@angular/core",
+            "npm:rxjs"
+          ]
+        },
+        {
+          "file": "libs/services/src/lib/utils/index.ts",
+          "hash": "7036113884395166684"
+        },
+        {
+          "file": "libs/services/tsconfig.json",
+          "hash": "17716510827809371820"
+        },
+        {
+          "file": "libs/services/tsconfig.lib.json",
+          "hash": "826380279380587436"
+        }
+      ],
+      "components": [
+        {
+          "file": "libs/components/README.md",
+          "hash": "2957218469203443244"
+        },
+        {
+          "file": "libs/components/eslint.config.mjs",
+          "hash": "805488336937133967",
+          "deps": [
+            "npm:@nx/eslint-plugin"
+          ]
+        },
+        {
+          "file": "libs/components/project.json",
+          "hash": "13224781567554154641"
+        },
+        {
+          "file": "libs/components/src/index.ts",
+          "hash": "1462847250089547856"
+        },
+        {
+          "file": "libs/components/src/lib/alert/alert.component.html",
+          "hash": "344514483880330188"
+        },
+        {
+          "file": "libs/components/src/lib/alert/alert.component.ts",
+          "hash": "8172559589018934109",
+          "deps": [
+            "npm:@angular/animations",
+            "npm:@angular/core",
+            "npm:@angular/material"
+          ]
+        },
+        {
+          "file": "libs/components/src/lib/alert/alert.interface.ts",
+          "hash": "16446865531730517987"
+        },
+        {
+          "file": "libs/components/src/lib/alert/index.ts",
+          "hash": "14932985449474425357"
+        },
+        {
+          "file": "libs/components/src/lib/header/header.component.html",
+          "hash": "18397371657038154711"
+        },
+        {
+          "file": "libs/components/src/lib/header/header.component.scss",
+          "hash": "593841501785673510"
+        },
+        {
+          "file": "libs/components/src/lib/header/header.component.ts",
+          "hash": "9658997551333838039",
+          "deps": [
+            "services",
+            "npm:@angular/core",
+            "npm:@angular/router",
+            "npm:rxjs"
+          ]
+        },
+        {
+          "file": "libs/components/src/lib/header/header.module.ts",
+          "hash": "12334001511784448662",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/common",
+            "npm:@angular/router",
+            "npm:@angular/material"
+          ]
+        },
+        {
+          "file": "libs/components/src/lib/header/index.ts",
+          "hash": "6514594186848100906"
+        },
+        {
+          "file": "libs/components/src/lib/loading/index.ts",
+          "hash": "16518310180288980106"
+        },
+        {
+          "file": "libs/components/src/lib/loading/loading-ref.ts",
+          "hash": "9788725401936526387",
+          "deps": [
+            "npm:@angular/cdk",
+            "npm:rxjs"
+          ]
+        },
+        {
+          "file": "libs/components/src/lib/loading/loading.component.html",
+          "hash": "17688786939211292938"
+        },
+        {
+          "file": "libs/components/src/lib/loading/loading.component.scss",
+          "hash": "16239969517569110351"
+        },
+        {
+          "file": "libs/components/src/lib/loading/loading.component.ts",
+          "hash": "2380503663755639266",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/common"
+          ]
+        },
+        {
+          "file": "libs/components/src/lib/loading/loading.interceptor.ts",
+          "hash": "13401779969042431792",
+          "deps": [
+            "npm:@angular/common",
+            "npm:@angular/core",
+            "npm:rxjs"
+          ]
+        },
+        {
+          "file": "libs/components/src/lib/loading/loading.service.ts",
+          "hash": "2909714195721298326",
+          "deps": [
+            "npm:@angular/cdk",
+            "npm:@angular/core",
+            "npm:rxjs"
+          ]
+        },
+        {
+          "file": "libs/components/src/lib/menu/index.ts",
+          "hash": "3581858528132031334"
+        },
+        {
+          "file": "libs/components/src/lib/menu/menu.component.html",
+          "hash": "17594783149851784288"
+        },
+        {
+          "file": "libs/components/src/lib/menu/menu.component.scss",
+          "hash": "2237137830275042078"
+        },
+        {
+          "file": "libs/components/src/lib/menu/menu.component.ts",
+          "hash": "16245287984481984641",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/router"
+          ]
+        },
+        {
+          "file": "libs/components/src/lib/menu/menu.module.ts",
+          "hash": "18057241934897651969",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/router",
+            "npm:@angular/common",
+            "npm:@angular/material"
+          ]
+        },
+        {
+          "file": "libs/components/src/lib/modal-info/index.ts",
+          "hash": "2827675551072153825"
+        },
+        {
+          "file": "libs/components/src/lib/modal-info/modal-info.component.html",
+          "hash": "2370816226557307149"
+        },
+        {
+          "file": "libs/components/src/lib/modal-info/modal-info.component.ts",
+          "hash": "7519338545887542457",
+          "deps": [
+            "npm:@angular/core",
+            "npm:@angular/material",
+            "npm:@angular/common"
+          ]
+        },
+        {
+          "file": "libs/components/src/lib/modal-info/modal-info.interface.ts",
+          "hash": "11461502614336180479"
+        },
+        {
+          "file": "libs/components/tsconfig.json",
+          "hash": "17716510827809371820"
+        },
+        {
+          "file": "libs/components/tsconfig.lib.json",
+          "hash": "826380279380587436"
+        }
+      ]
+    }
+  },
+  "externalNodesHash": "11738298748893114520"
+}

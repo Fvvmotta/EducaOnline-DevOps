@@ -1,0 +1,10 @@
+# ============================================
+# Namespace - EducaOnline
+# ============================================
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: educaonline
+  labels:
+    app.kubernetes.io/name: educaonline
+    app.kubernetes.io/part-of: educaonline-platform

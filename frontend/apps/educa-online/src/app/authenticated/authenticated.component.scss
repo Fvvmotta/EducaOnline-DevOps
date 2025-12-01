@@ -1,0 +1,32 @@
+.grid-content {
+    display: grid;
+    grid-template-columns: 10rem auto;
+    grid-template-rows: 100vh;
+  }
+
+  .content {
+    height: 100vh;
+    overflow: auto;
+    background-color: #eff4f9;
+
+  }
+
+  @media (max-width: 992px) {
+    .grid-content {
+      grid-template-columns: 1fr;
+    }
+
+    .content {
+      grid-area: 1/1;
+    }
+
+    .menu {
+      position: relative;
+      z-index: 2;
+      grid-area: 1/1;
+      place-self: start end;
+      margin-top: 2.5rem;
+      margin-right: 1.625rem;
+    }
+
+  }

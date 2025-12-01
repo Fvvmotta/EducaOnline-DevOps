@@ -1,0 +1,108 @@
+# ============================================
+# BFF (Backend for Frontend) - Deployment e Service
+# ============================================
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bff
+  namespace: educaonline
+  labels:
+    app: bff
+    app.kubernetes.io/name: bff
+    app.kubernetes.io/part-of: educaonline-platform
+    app.kubernetes.io/component: gateway
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: bff
+  template:
+    metadata:
+      labels:
+        app: bff
+    spec:
+      containers:
+        - name: bff
+          image: fermotta/educaonline-bff:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
+          env:
+            - name: ASPNETCORE_ENVIRONMENT
+              valueFrom:
+                configMapKeyRef:
+                  name: educaonline-config
+                  key: ASPNETCORE_ENVIRONMENT
+            - name: Services__IdentidadeUrl
+              valueFrom:
+                configMapKeyRef:
+                  name: educaonline-config
+                  key: IDENTIDADE_URL
+            - name: Services__ConteudoUrl
+              valueFrom:
+                configMapKeyRef:
+                  name: educaonline-config
+                  key: CONTEUDO_URL
+            - name: Services__AlunoUrl
+              valueFrom:
+                configMapKeyRef:
+                  name: educaonline-config
+                  key: ALUNO_URL
+            - name: Services__PedidosUrl
+              valueFrom:
+                configMapKeyRef:
+                  name: educaonline-config
+                  key: PEDIDOS_URL
+            - name: Services__FinanceiroUrl
+              valueFrom:
+                configMapKeyRef:
+                  name: educaonline-config
+                  key: FINANCEIRO_URL
+            - name: MessageQueueConnection__MessageBus
+              valueFrom:
+                secretKeyRef:
+                  name: educaonline-secrets
+                  key: RABBITMQ_CONNECTION
+            - name: JwtSettings__Secret
+              valueFrom:
+                secretKeyRef:
+                  name: educaonline-secrets
+                  key: JWT_SECRET
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "100m"
+            limits:
+              memory: "256Mi"
+              cpu: "250m"
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 80
+            initialDelaySeconds: 30
+            periodSeconds: 30
+            timeoutSeconds: 5
+            failureThreshold: 3
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 80
+            initialDelaySeconds: 10
+            periodSeconds: 10
+            timeoutSeconds: 3
+            failureThreshold: 3
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: bff-service
+  namespace: educaonline
+  labels:
+    app: bff
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 80
+      targetPort: 80
+  selector:
+    app: bff

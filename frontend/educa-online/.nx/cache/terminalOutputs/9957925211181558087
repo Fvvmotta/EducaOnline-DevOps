@@ -1,0 +1,66 @@
+[33m❯[39m Building...
+[32m✔[39m Building...
+[37m[1mInitial chunk files[22m[2m | [22m[1mNames[22m        [2m | [22m [1mRaw size[22m[39m
+[37m[32mmain.js[39m[37m            [2m | [22m[2mmain[22m         [2m | [22m [36m14.91 kB[39m[37m[2m | [22m[39m
+[37m[32mstyles.css[39m[37m         [2m | [22m[2mstyles[22m       [2m | [22m[36m114 bytes[39m[37m[2m | [22m[39m
+[37m[32mpolyfills.js[39m[37m       [2m | [22m[2mpolyfills[22m    [2m | [22m [36m95 bytes[39m[37m[2m | [22m[39m
+[37m[39m
+[37m[1m [22m                  [2m | [22m[1mInitial total[22m[2m | [22m [1m15.12 kB[22m[39m
+[37m[39m
+[37mApplication bundle generation complete. [4.028 seconds][39m
+[37m[39m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mDeprecation[0m [1m[35m[plugin angular-sass][0m[39m[22m
+[1m[33m[39m[22m
+[1m[33m    apps/educa-online/src/app/public/login/form-login/form-login.component.scss:1:8:[39m[22m
+[1m[33m[37m      1 │ @import [32m[37m'../../../../assets/scss/variables';[39m[22m
+[1m[33m        ╵         [32m^[0m[39m[22m
+[1m[33m[39m[22m
+[1m[33m[39m[22m
+[1m[33m  Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.[39m[22m
+[1m[33m  [39m[22m
+[1m[33m  More info and automated migrator: [4mhttps://sass-lang.com/d/import[0m[39m[22m
+[1m[33m[39m[22m
+[1m[33m[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mDeprecation[0m [1m[35m[plugin angular-sass][0m[39m[22m
+[1m[33m[39m[22m
+[1m[33m    apps/educa-online/src/app/public/login/form-nova-conta/form-nova-conta.component.scss:1:8:[39m[22m
+[1m[33m[37m      1 │ @import [32m[37m'../../../../assets/scss/variables';[39m[22m
+[1m[33m        ╵         [32m^[0m[39m[22m
+[1m[33m[39m[22m
+[1m[33m[39m[22m
+[1m[33m  Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.[39m[22m
+[1m[33m  [39m[22m
+[1m[33m  More info and automated migrator: [4mhttps://sass-lang.com/d/import[0m[39m[22m
+[1m[33m[39m[22m
+[1m[33m[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mDeprecation[0m [1m[35m[plugin angular-sass][0m[39m[22m
+[1m[33m[39m[22m
+[1m[33m    apps/educa-online/src/app/public/login/login.component.scss:1:8:[39m[22m
+[1m[33m[37m      1 │ @import [32m[37m'./../../../assets/scss/variables';[39m[22m
+[1m[33m        ╵         [32m^[0m[39m[22m
+[1m[33m[39m[22m
+[1m[33m[39m[22m
+[1m[33m  Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.[39m[22m
+[1m[33m  [39m[22m
+[1m[33m  More info and automated migrator: [4mhttps://sass-lang.com/d/import[0m[39m[22m
+[1m[33m[39m[22m
+[1m[33m[39m[22m
+[1m[33m[33m▲ [43;33m[[43;30mWARNING[43;33m][0m [1mDeprecation[0m [1m[35m[plugin angular-sass][0m[39m[22m
+[1m[33m[39m[22m
+[1m[33m    apps/educa-online/src/app/public/login/login.component.scss:2:8:[39m[22m
+[1m[33m[37m      2 │ @import [32m[37m'./../../../assets/scss/mixins';[39m[22m
+[1m[33m        ╵         [32m^[0m[39m[22m
+[1m[33m[39m[22m
+[1m[33m[39m[22m
+[1m[33m  Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.[39m[22m
+[1m[33m  [39m[22m
+[1m[33m  More info and automated migrator: [4mhttps://sass-lang.com/d/import[0m[39m[22m
+[1m[33m[39m[22m
+[1m[33m[39m[22m
+[37mWatch mode enabled. Watching for file changes...[39m
+[37mNOTE: Raw file sizes do not reflect development server per-request transformations.[39m
+
+[0m[7m[1m[31m NX [39m[22m[27m[0m  [31mcrypto.hash is not a function[39m
+
+Pass --verbose to see the stacktrace.
+

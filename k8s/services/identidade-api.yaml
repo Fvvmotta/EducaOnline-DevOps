@@ -1,0 +1,103 @@
+# ============================================
+# Identidade API - Deployment e Service
+# ============================================
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: identidade-api
+  namespace: educaonline
+  labels:
+    app: identidade-api
+    app.kubernetes.io/name: identidade-api
+    app.kubernetes.io/part-of: educaonline-platform
+    app.kubernetes.io/component: api
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: identidade-api
+  template:
+    metadata:
+      labels:
+        app: identidade-api
+    spec:
+      containers:
+        - name: identidade-api
+          image: fermotta/educaonline-identidade-api:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
+          env:
+            - name: ASPNETCORE_ENVIRONMENT
+              valueFrom:
+                configMapKeyRef:
+                  name: educaonline-config
+                  key: ASPNETCORE_ENVIRONMENT
+            - name: ConnectionStrings__DefaultConnection
+              valueFrom:
+                secretKeyRef:
+                  name: educaonline-secrets
+                  key: SQLSERVER_CONNECTION_IDENTIDADE
+            - name: MessageQueueConnection__MessageBus
+              valueFrom:
+                secretKeyRef:
+                  name: educaonline-secrets
+                  key: RABBITMQ_CONNECTION
+            - name: JwtSettings__Secret
+              valueFrom:
+                secretKeyRef:
+                  name: educaonline-secrets
+                  key: JWT_SECRET
+            - name: JwtSettings__ExpiracaoHoras
+              valueFrom:
+                configMapKeyRef:
+                  name: educaonline-config
+                  key: JWT_EXPIRACAO_HORAS
+            - name: JwtSettings__Emissor
+              valueFrom:
+                configMapKeyRef:
+                  name: educaonline-config
+                  key: JWT_EMISSOR
+            - name: JwtSettings__ValidoEm
+              valueFrom:
+                configMapKeyRef:
+                  name: educaonline-config
+                  key: JWT_VALIDO_EM
+          resources:
+            requests:
+              memory: "128Mi"
+              cpu: "100m"
+            limits:
+              memory: "256Mi"
+              cpu: "250m"
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 80
+            initialDelaySeconds: 30
+            periodSeconds: 30
+            timeoutSeconds: 5
+            failureThreshold: 3
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 80
+            initialDelaySeconds: 10
+            periodSeconds: 10
+            timeoutSeconds: 3
+            failureThreshold: 3
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: identidade-api-service
+  namespace: educaonline
+  labels:
+    app: identidade-api
+spec:
+  type: ClusterIP
+  ports:
+    - port: 80
+      targetPort: 80
+  selector:
+    app: identidade-api

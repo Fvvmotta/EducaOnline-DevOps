@@ -1,0 +1,19 @@
+<div class="content-modal">
+  <div class="header-modal" [ngClass]="{'danger': data?.btn === 'danger'}">
+    <span class="titulo-sublinhado font-weight-550">{{ data?.titulo }}</span>
+    <i (click)="voltar()" class="fal fa-times-circle"></i>
+  </div>
+  <div class="body-modal" [ngClass]="{'danger': data?.btn === 'danger'}">
+    <span [innerText]="data?.texto"></span>
+  </div>
+
+  <div class="footer-modal">
+    <button mat-raised-button class="me-3" (click)="voltar()">
+      {{data?.btnCancel}}
+    </button>
+
+    <button mat-flat-button (click)="confirmar()">
+      {{data?.btnOk}}
+    </button>
+  </div>
+</div>

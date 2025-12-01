@@ -1,0 +1,26 @@
+<div class="height-max">
+  <div class="header">
+    <div class="titulo-content">
+      <h1 class="titulo-sublinhado">
+        {{ titulo }}
+      </h1>
+
+      <div class="d-flex align-items-center justify-content-center">
+        <div class="d-flex flex-column">
+          <span class="email-usuario">{{email}}</span>
+
+          <!-- <span class="tipo-usuario">{{authService.getNome()}}</span>
+          <span class="email-usuario">{{ authService.getEmail() }}</span> -->
+        </div>
+        <span class="ms-3 material-symbols-outlined cursor-pointer" (click)="logout()">
+          logout
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <div class="content">
+    <ng-content></ng-content>
+  </div>
+</div>
+<div [ngClass]="{ overlay: true }"></div>

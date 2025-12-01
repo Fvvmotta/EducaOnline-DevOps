@@ -1,0 +1,13 @@
+/* You can add global styles to this file, and also import other style files */
+@import './assets/scss/themes/custom-theme.scss';
+@import 'assets/scss/main';
+
+:root {
+  --cor-principal-h: 250;
+  --cor-principal-s: 48%;
+  --cor-principal-l: 12%;
+
+  --cor-principal: #2496C8;
+  --cor-secundaria: #36f2ce;
+  --cor-terciaria: #1a5ff8;
+}

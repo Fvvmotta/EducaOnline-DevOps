@@ -1,0 +1,64 @@
+/* ---------- CARD DE CURSO ---------- */
+.card-container {
+  display: flex;
+  justify-content: center;
+}
+
+.course-card {
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  padding-bottom: 1.5rem;
+}
+
+.course-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px rgba(25, 118, 210, 0.25);
+}
+
+.course-card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+}
+
+/* ---------- TEXTOS DO CARD ---------- */
+.course-card h3 {
+  margin: 1rem 0 0.5rem;
+  font-size: 1.3rem;
+  color: #8714FA;
+  text-align: center;
+}
+
+.course-card p {
+  color: #555;
+  font-size: 0.95rem;
+  padding: 0 1.2rem;
+  text-align: center;
+  line-height: 1.4;
+}
+
+.course-card p b {
+  color: #8714FA;
+}
+
+/* ---------- BOTÃO ---------- */
+.course-card button {
+  margin-top: 1rem;
+  background: linear-gradient(90deg, #8714FA, #af8dcf);
+  color: #fff;
+  border: none;
+  padding: 0.6rem 1.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.course-card button:hover {
+  background: linear-gradient(90deg, #8714FA, #af8dcf);
+  transform: translateY(-2px);
+}

@@ -1,0 +1,170 @@
+# ============================================
+# GitHub Actions - CI/CD Pipeline
+# EducaOnline - Build, Test e Deploy
+# ============================================
+
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+  pull_request:
+    branches:
+      - main
+      - develop
+
+env:
+  DOTNET_VERSION: '9.0.x'
+  DOCKER_REGISTRY: docker.io
+  DOCKER_USERNAME: fermotta
+
+jobs:
+  # ==========================================
+  # BUILD E TESTES
+  # ==========================================
+  build-and-test:
+    name: Build e Testes
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v4
+
+      - name: Setup .NET SDK
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: ${{ env.DOTNET_VERSION }}
+
+      - name: Cache NuGet packages
+        uses: actions/cache@v4
+        with:
+          path: ~/.nuget/packages
+          key: ${{ runner.os }}-nuget-${{ hashFiles('**/packages.lock.json', '**/*.csproj') }}
+          restore-keys: |
+            ${{ runner.os }}-nuget-
+
+      - name: Restore de dependências
+        run: dotnet restore backend/EducaOnline.sln
+
+      - name: Build da solução
+        run: dotnet build backend/EducaOnline.sln --configuration Release --no-restore
+
+      - name: Executar testes unitários
+        run: dotnet test backend/EducaOnline.sln --configuration Release --no-build --verbosity normal
+        continue-on-error: true
+
+  # ==========================================
+  # ANÁLISE DE CÓDIGO
+  # ==========================================
+  code-analysis:
+    name: Análise de Código
+    runs-on: ubuntu-latest
+    needs: build-and-test
+    
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v4
+
+      - name: Setup .NET SDK
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: ${{ env.DOTNET_VERSION }}
+
+      - name: Restore de dependências
+        run: dotnet restore backend/EducaOnline.sln
+
+      - name: Análise com dotnet format
+        run: dotnet format backend/EducaOnline.sln --verify-no-changes --verbosity diagnostic
+        continue-on-error: true
+
+  # ==========================================
+  # BUILD E PUSH DAS IMAGENS DOCKER
+  # ==========================================
+  docker-build-push:
+    name: Build e Push Docker Images
+    runs-on: ubuntu-latest
+    needs: [build-and-test, code-analysis]
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    
+    strategy:
+      matrix:
+        include:
+          - service: identidade-api
+            dockerfile: backend/src/services/EducaOnline.Identidade.API/Dockerfile
+            context: backend
+          - service: conteudo-api
+            dockerfile: backend/src/services/EducaOnline.Conteudo.API/Dockerfile
+            context: backend
+          - service: aluno-api
+            dockerfile: backend/src/services/EducaOnline.Aluno.API/Dockerfile
+            context: backend
+          - service: pedidos-api
+            dockerfile: backend/src/services/EducaOnline.Pedidos.API/Dockerfile
+            context: backend
+          - service: financeiro-api
+            dockerfile: backend/src/services/EducaOnline.Financeiro.API/Dockerfile
+            context: backend
+          - service: bff
+            dockerfile: backend/src/api_gateways/EducaOnline.Bff/Dockerfile
+            context: backend
+    
+    steps:
+      - name: Checkout do código
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Login no Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Extrair metadata para Docker
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{ env.DOCKER_USERNAME }}/educaonline-${{ matrix.service }}
+          tags: |
+            type=ref,event=branch
+            type=sha,prefix=
+            type=raw,value=latest,enable={{is_default_branch}}
+
+      - name: Build e Push da imagem
+        uses: docker/build-push-action@v5
+        with:
+          context: ${{ matrix.context }}
+          file: ${{ matrix.dockerfile }}
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+  # ==========================================
+  # NOTIFICAÇÃO DE SUCESSO
+  # ==========================================
+  notify-success:
+    name: Notificar Sucesso
+    runs-on: ubuntu-latest
+    needs: docker-build-push
+    if: success()
+    
+    steps:
+      - name: Resumo do Deploy
+        run: |
+          echo "## 🚀 Deploy realizado com sucesso!" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Imagens publicadas no Docker Hub:" >> $GITHUB_STEP_SUMMARY
+          echo "- fermotta/educaonline-identidade-api:latest" >> $GITHUB_STEP_SUMMARY
+          echo "- fermotta/educaonline-conteudo-api:latest" >> $GITHUB_STEP_SUMMARY
+          echo "- fermotta/educaonline-aluno-api:latest" >> $GITHUB_STEP_SUMMARY
+          echo "- fermotta/educaonline-pedidos-api:latest" >> $GITHUB_STEP_SUMMARY
+          echo "- fermotta/educaonline-financeiro-api:latest" >> $GITHUB_STEP_SUMMARY
+          echo "- fermotta/educaonline-bff:latest" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Commit:** ${{ github.sha }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Branch:** ${{ github.ref_name }}" >> $GITHUB_STEP_SUMMARY

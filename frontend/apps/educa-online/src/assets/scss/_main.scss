@@ -1,0 +1,33 @@
+@import 'reset';
+@import 'variables';
+@import 'utils';
+@import './vendor/bootstrap-grid';
+@import './vendor/material-table';
+@import 'modal';
+@import 'alert';;
+
+p, span, label, button, small,input, button, textarea, select, h1, h2, h3, h4, h5,h6, .cdk-table, .ng-select, ngx-dropzone {
+  // color: $cor-texto;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+}
+
+
+@media (min-width: ($break-desktop-full-hd + 1)) {
+  html, body {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: $break-desktop-hd) {
+  html, body {
+    font-size: 14px;
+  }
+}
+
+// tablet
+@media (min-width: $break-tablet) and (max-width: $break-phablet) {
+  html, body {
+    font-size: 18px;
+  }
+}

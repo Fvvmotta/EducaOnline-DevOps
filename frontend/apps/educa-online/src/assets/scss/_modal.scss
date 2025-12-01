@@ -1,0 +1,62 @@
+@import "./variables";
+
+.content-modal {
+  .header-modal {
+    padding: $size-15;
+    color: $cor-texto;
+    display: flex;
+    justify-content: space-between;
+
+    .titulo {
+      font-size: $size-14;
+      font-weight: 550;
+    }
+
+    .fa-times-circle {
+        cursor: pointer;
+        color: $cor-principal;
+    }
+  }
+
+  .body-modal {
+    padding: $size-15;
+    // height: 440px;
+    overflow: auto;
+
+    &.paineis {
+      overflow: unset !important;
+    }
+  }
+
+  .footer-modal {
+    padding: $size-15;
+    display: flex;
+    justify-content: flex-end;
+    background-color: $cor-cinza-bg;
+    border-bottom-left-radius: $radius;
+    border-bottom-right-radius: $radius;
+  }
+}
+
+// Overlay backdrop styling
+.overlay-backdrop {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.cdk-overlay-dark-backdrop {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.cdk-overlay-loading-backdrop {
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+
+// Overlay panel styling
+.overlay-panel {
+  display: flex;
+  flex-direction: column;
+  background-color: $cor-branco;
+  // padding: 20px;
+  border-radius: $radius;
+}

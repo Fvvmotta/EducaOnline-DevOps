@@ -1,0 +1,29 @@
+<div class="menu">
+  <div class="menu-icons">
+    <div class="logo">
+      <img class="img" src="assets/imgs/logo_reduzida.png" alt="">
+      <p>Educa online</p>
+    </div>
+
+    @if(perfil == "ADM"){
+      <div class="menu-item" [routerLink]="['aluno']">
+        <div class="d-flex" [ngClass]="{'ativo': ativo('aluno')}">
+          <span class="material-symbols-outlined">
+            person
+          </span>
+  
+          <p class="opcao font-16 ms-1">Alunos</p>
+        </div>
+      </div>
+    }
+
+    <div class="menu-item" [routerLink]="['curso']">
+      <div class="d-flex" [ngClass]="{'ativo': ativo('curso')}">
+        <span class="material-symbols-outlined">
+          school
+        </span>
+
+        <p class="opcao font-16 ms-1">Cursos</p>
+      </div>
+    </div>
+</div>

@@ -1,0 +1,37 @@
+@import '../../../../assets/scss/variables';
+
+
+.content-form {
+  width: 30rem;
+  margin: 0 auto;
+}
+
+@media (max-width: $break-desktop) {
+  .content-form{
+    width: 80%;
+  }
+}
+
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+.button-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+
+.custom-form-field {
+  --mat-form-field-padding: 0px;       /* Remove o padding extra */
+  --mat-input-min-height: 32px;       /* Define a altura mínima */
+  --mat-form-field-outline-width: 1px; /* Ajusta a largura do contorno */
+  font-size: 14px;                     /* Ajusta o tamanho da fonte */
+}

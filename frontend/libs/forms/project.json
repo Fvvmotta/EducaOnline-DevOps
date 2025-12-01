@@ -1,0 +1,13 @@
+{
+  "name": "forms",
+  "$schema": "../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "forms/src",
+  "prefix": "lib",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    }
+  }
+}

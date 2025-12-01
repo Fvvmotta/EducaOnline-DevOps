@@ -1,0 +1,13 @@
+.table-content {
+  max-height: calc(100vh - 11.625rem);
+  overflow: auto;
+}
+
+.cdk-column-acoes {
+  flex: 0 0 10rem;
+}
+
+.filter-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}

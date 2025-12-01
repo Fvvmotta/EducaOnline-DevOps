@@ -1,0 +1,51 @@
+<div class="filter-content">
+  <div class="d-flex align-items-center">
+    <mat-form-field class="example-full-width" appearance="outline">
+      <mat-label>Buscar aula</mat-label>
+      <input matInput>
+    </mat-form-field>
+  </div>
+
+  @if(usuarioAdmin){
+    <div class="d-flex justify-content-end">
+      <button class="width-10" mat-flat-button (click)="novaAula()">Nova aula</button>
+    </div>
+  }
+</div>
+
+<div class="table-content">
+  <mat-table mat-table [dataSource]="aulas">
+    <ng-container matColumnDef="titulo">
+      <mat-header-cell *matHeaderCellDef> Titulo </mat-header-cell>
+      <mat-cell *matCellDef="let element" data-label="Titulo"> {{element.titulo}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="descricao">
+      <mat-header-cell *matHeaderCellDef> Descrição </mat-header-cell>
+      <mat-cell *matCellDef="let element" data-label="Descrição"> {{element.descricao}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="totalHoras">
+      <mat-header-cell *matHeaderCellDef> Total de horas </mat-header-cell>
+      <mat-cell *matCellDef="let element" data-label="Total de horas"> {{element.totalHoras}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="acoes">
+      <mat-header-cell *matHeaderCellDef> Ações </mat-header-cell>
+      <mat-cell *matCellDef="let element" data-label="Ações">
+        @if(usuarioAdmin){
+          <span class="material-symbols-outlined cursor-pointer" (click)="editarAula(element)">
+            edit
+          </span>
+  
+          <span class="material-symbols-outlined cor-vermelho ms-2 cursor-pointer" (click)="removerAula(element.id)">
+            delete
+          </span>
+        }
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row >
+  </mat-table>
+</div>

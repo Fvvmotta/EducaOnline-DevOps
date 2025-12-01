@@ -1,0 +1,163 @@
+
+
+/* ---------- HEADER ---------- */
+.header {
+  position: relative;
+  background-image: url('/imgs/educa_online.png');
+  background-size: cover;
+  background-position: center;
+  height: 15vh;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.overlay {
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 40, 0.55);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.header-content {
+  width: 100%;
+  max-width: 1200px;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.user-area {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.welcome {
+  font-size: 1rem;
+  background: rgba(255, 255, 255, 0.15);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-weight: 500;
+}
+
+.login-btn {
+  background: linear-gradient(90deg, #8714FA, #af8dcf);
+  border: none;
+  color: white;
+  padding: 0.6rem 1.2rem;
+  border-radius: 20px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.login-btn:hover {
+  background: linear-gradient(90deg, #8714FA, #af8dcf);
+  transform: scale(1.05);
+}
+
+.text-left{
+    text-align: left;
+}
+
+.subtitle {
+  text-align: center;
+  margin-top: 0.8rem;
+  font-size: 1.1rem;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  color: #e0e0e0;
+}
+
+/* ---------- CONTAINER ---------- */
+.container {
+  padding: 2.5rem 0;
+  margin: 0 auto;
+}
+
+.container h2 {
+  text-align: center;
+  font-size: 1.8rem;
+  margin-bottom: 2rem;
+  color: #8714FA;
+}
+
+/* ---------- GRID DE CURSOS ---------- */
+.courses {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 2rem;
+}
+
+/* ---------- CARD DE CURSO ---------- */
+.course-card {
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  padding-bottom: 1.5rem;
+}
+
+.course-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px rgba(25, 118, 210, 0.25);
+}
+
+.course-card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+}
+
+/* ---------- TEXTOS DO CARD ---------- */
+.course-card h3 {
+  margin: 1rem 0 0.5rem;
+  font-size: 1.3rem;
+  color: #8714FA;
+  text-align: center;
+}
+
+.course-card p {
+  color: #555;
+  font-size: 0.95rem;
+  padding: 0 1.2rem;
+  text-align: center;
+  line-height: 1.4;
+}
+
+.course-card p b {
+  color: #8714FA;
+}
+
+/* ---------- BOTÃO ---------- */
+.course-card button {
+  margin-top: 1rem;
+  background: linear-gradient(90deg, #8714FA, #af8dcf);
+  color: #fff;
+  border: none;
+  padding: 0.6rem 1.5rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.course-card button:hover {
+  background: linear-gradient(90deg, #8714FA, #af8dcf);
+  transform: translateY(-2px);
+}

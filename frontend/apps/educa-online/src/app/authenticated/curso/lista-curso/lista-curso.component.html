@@ -1,0 +1,108 @@
+<div class="filter-content">
+  <div class="d-flex align-items-center">
+    <mat-form-field class="example-full-width" appearance="outline">
+      <mat-label>Buscar curso</mat-label>
+      <input matInput>
+    </mat-form-field>
+  </div>
+
+  @if(usuarioAdmin){
+    <div class="d-flex justify-content-end">
+      <button class="width-10" mat-flat-button (click)="novoCurso()">Novo curso</button>
+    </div>
+  }
+</div>
+
+@if(usuarioAdmin){
+  <div class="table-content">
+    <mat-table mat-table [dataSource]="cursos">
+      <ng-container matColumnDef="nome">
+        <mat-header-cell *matHeaderCellDef> Nome </mat-header-cell>
+        <mat-cell *matCellDef="let element" data-label="Nome"> {{element.nome}} </mat-cell>
+      </ng-container>
+  
+      <ng-container matColumnDef="titulo">
+        <mat-header-cell *matHeaderCellDef> Titulo </mat-header-cell>
+        <mat-cell *matCellDef="let element" data-label="Titulo"> {{element.conteudoProgramatico.titulo}} </mat-cell>
+      </ng-container>
+  
+      <ng-container matColumnDef="cargaHoraria">
+        <mat-header-cell *matHeaderCellDef> Carga horária </mat-header-cell>
+        <mat-cell *matCellDef="let element" data-label="Carga horária"> {{element.conteudoProgramatico.cargaHoraria}} </mat-cell>
+      </ng-container>
+  
+      <ng-container matColumnDef="ativo">
+        <mat-header-cell *matHeaderCellDef> Ativo </mat-header-cell>
+        <mat-cell *matCellDef="let element" data-label="Ativo">
+          @if (element.ativo) {
+          <p>Sim</p>
+          }@else {
+          <p>Não</p>
+          }
+        </mat-cell>
+      </ng-container>
+  
+      <ng-container matColumnDef="acoes">
+        <mat-header-cell *matHeaderCellDef> Ações </mat-header-cell>
+        <mat-cell *matCellDef="let element" data-label="Ações">
+          <span class="material-symbols-outlined cursor-pointer" (click)="abrirControleAulas(element.id)">
+            school
+          </span>
+  
+          <span class="material-symbols-outlined ms-2 cursor-pointer" (click)="editarCurso(element.id)">
+            edit
+          </span>
+  
+          <span class="material-symbols-outlined cor-vermelho ms-2 cursor-pointer" (click)="desativarCurso(element.id)">
+            delete
+          </span>
+        </mat-cell>
+      </ng-container>
+  
+      <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row >
+    </mat-table>
+  </div>
+}
+@else {
+  <div class="table-content">
+    <mat-table mat-table [dataSource]="matriculas">
+      <ng-container matColumnDef="cursoNome">
+        <mat-header-cell *matHeaderCellDef> Nome </mat-header-cell>
+        <mat-cell *matCellDef="let element" data-label="Nome"> {{element.cursoNome}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="totalAulas">
+        <mat-header-cell *matHeaderCellDef> Total Aulas </mat-header-cell>
+        <mat-cell *matCellDef="let element" data-label="Total Aulas"> {{element.totalAulas}} </mat-cell>
+      </ng-container>
+  
+      <ng-container matColumnDef="cargaHorariaTotal">
+        <mat-header-cell *matHeaderCellDef> Carga horária </mat-header-cell>
+        <mat-cell *matCellDef="let element" data-label="Carga horária"> {{element.cargaHorariaTotal}} </mat-cell>
+      </ng-container>
+  
+      <ng-container matColumnDef="status">
+        <mat-header-cell *matHeaderCellDef> Status </mat-header-cell>
+        <mat-cell *matCellDef="let element" data-label="Status"> {{element.status}} </mat-cell>
+      </ng-container>
+
+      <ng-container matColumnDef="aulasConcluidas">
+        <mat-header-cell *matHeaderCellDef> Aulas concluidas </mat-header-cell>
+        <mat-cell *matCellDef="let element" data-label="Aulas concluidas"> {{element.aulasConcluidas}} </mat-cell>
+      </ng-container>
+  
+      <ng-container matColumnDef="acoes">
+        <mat-header-cell *matHeaderCellDef> Ações </mat-header-cell>
+        <mat-cell *matCellDef="let element" data-label="Ações">
+          <span class="material-symbols-outlined cursor-pointer" (click)="abrirControleAulas(element.cursoId)">
+            school
+          </span>
+        </mat-cell>
+      </ng-container>
+  
+      <mat-header-row *matHeaderRowDef="displayedColumnsMatricula; sticky: true"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumnsMatricula;"></mat-row >
+    </mat-table>
+  </div>
+}
