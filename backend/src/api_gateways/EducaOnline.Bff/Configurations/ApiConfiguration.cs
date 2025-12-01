@@ -1,5 +1,6 @@
-﻿using EducaOnline.Bff.Extensions;
+using EducaOnline.Bff.Extensions;
 using EducaOnline.WebAPI.Core.Identidade;
+using EducaOnline.WebAPI.Core.Configuration;
 
 namespace EducaOnline.Bff.Configurations
 {
@@ -9,7 +10,6 @@ namespace EducaOnline.Bff.Configurations
         {
             services.AddControllers();
             services.Configure<AppServicesSettings>(configuration);
-
             services.AddCors(options =>
             {
                 options.AddPolicy("Total",
@@ -19,24 +19,20 @@ namespace EducaOnline.Bff.Configurations
                             .AllowAnyMethod()
                             .AllowAnyHeader());
             });
+            services.AddHealthCheckConfig(configuration);
             return services;
         }
-
         public static WebApplication UseApiConfiguration(this WebApplication app)
         {
             if (app.Environment.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
-
             app.UseHttpsRedirection();
-
             app.UseCors("Total");
-
             app.UseAuthConfiguration();
-
+            app.UseHealthCheckConfig();
             app.MapControllers();
-
             return app;
         }
     }

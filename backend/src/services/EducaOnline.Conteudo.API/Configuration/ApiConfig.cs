@@ -1,6 +1,7 @@
-﻿using EducaOnline.Conteudo.API.Data;
+using EducaOnline.Conteudo.API.Data;
 using EducaOnline.Core.Middlewares;
 using EducaOnline.WebAPI.Core.Identidade;
+using EducaOnline.WebAPI.Core.Configuration;
 using Microsoft.EntityFrameworkCore;
 
 namespace EducaOnline.Conteudo.API.Configuration
@@ -9,16 +10,13 @@ namespace EducaOnline.Conteudo.API.Configuration
     {
         public static void AddApiConfig(this IServiceCollection services, IConfiguration configuration)
         {
-
             services.AddDbContext<ConteudoContext>(options =>
                options.UseSqlite(configuration.GetConnectionString("DefaultConnection")));
-
             services.AddControllers()
                  .AddJsonOptions(options =>
                  {
                      options.JsonSerializerOptions.ReferenceHandler = System.Text.Json.Serialization.ReferenceHandler.IgnoreCycles;
                  });
-
             services.AddCors(options =>
             {
                 options.AddPolicy("Total",
@@ -30,15 +28,13 @@ namespace EducaOnline.Conteudo.API.Configuration
                          .AllowCredentials()
                          .WithExposedHeaders("X-Pagination"));
             });
-
             services.AddSwaggerGen();
             services.AddEndpointsApiExplorer();
             services.AddSwaggerConfig();
-
             services.AddAutoMapper(typeof(Program));
             services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblyContaining<Program>());
+            services.AddHealthCheckConfig(configuration);
         }
-
         public static void UseApiConfig(this WebApplication app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
@@ -46,16 +42,12 @@ namespace EducaOnline.Conteudo.API.Configuration
                 app.UseDeveloperExceptionPage();
                 app.UseSwaggerConfig();
             }
-
             app.UseHttpsRedirection();
-
             app.UseMiddleware(typeof(ExceptionMiddleware));
             app.UseRouting();
-
             app.UseCors("Total");
-
             app.UseAuthConfiguration();
-
+            app.UseHealthCheckConfig();
             app.MapControllers();
         }
     }

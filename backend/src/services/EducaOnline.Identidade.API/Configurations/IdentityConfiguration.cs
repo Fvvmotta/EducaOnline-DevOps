@@ -1,6 +1,7 @@
-﻿using EducaOnline.Identidade.API.Data;
+using EducaOnline.Identidade.API.Data;
 using EducaOnline.Identidade.API.Extensions;
 using EducaOnline.WebAPI.Core.Identidade;
+using EducaOnline.WebAPI.Core.Configuration;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -16,9 +17,8 @@ namespace EducaOnline.Identidade.API.Configurations
                 .AddErrorDescriber<IdentityPortugueseMessages>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
-
             services.AddJwtConfiguration(configuration);
-
+            services.AddHealthCheckConfig(configuration);
             return services;
         }
     }

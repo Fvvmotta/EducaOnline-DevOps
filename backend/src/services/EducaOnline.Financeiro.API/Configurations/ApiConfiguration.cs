@@ -1,6 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using EducaOnline.Financeiro.API.Data;
 using EducaOnline.WebAPI.Core.Identidade;
+using EducaOnline.WebAPI.Core.Configuration;
 using EducaOnline.Financeiro.API.Facade;
 
 namespace EducaOnline.Financeiro.API.Configurations
@@ -27,12 +28,13 @@ namespace EducaOnline.Financeiro.API.Configurations
                             .AllowAnyHeader());
             });
 
+            services.AddHealthCheckConfig(configuration);
+
             return services;
         }
 
         public static WebApplication UseApiConfiguration(this WebApplication app)
         {
-
             if (app.Environment.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -44,11 +46,11 @@ namespace EducaOnline.Financeiro.API.Configurations
 
             app.UseAuthConfiguration();
 
+            app.UseHealthCheckConfig();
+
             app.MapControllers();
 
             return app;
         }
     }
-
-    
 }

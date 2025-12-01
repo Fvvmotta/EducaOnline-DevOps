@@ -1,4 +1,5 @@
-﻿using EducaOnline.WebAPI.Core.Identidade;
+using EducaOnline.WebAPI.Core.Identidade;
+using EducaOnline.WebAPI.Core.Configuration;
 using EducaOnLine.Pedidos.API.Data;
 using Microsoft.EntityFrameworkCore;
 
@@ -13,7 +14,6 @@ namespace EducaOnline.Pedidos.API.Configurations
             );
 
             services.AddControllers();
-            
 
             services.AddCors(options =>
             {
@@ -25,12 +25,13 @@ namespace EducaOnline.Pedidos.API.Configurations
                             .AllowAnyHeader());
             });
 
+            services.AddHealthCheckConfig(configuration);
+
             return services;
         }
 
         public static WebApplication UseApiConfiguration(this WebApplication app)
         {
-
             if (app.Environment.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -44,11 +45,11 @@ namespace EducaOnline.Pedidos.API.Configurations
 
             app.UseAuthConfiguration();
 
+            app.UseHealthCheckConfig();
+
             app.MapControllers();
 
             return app;
         }
     }
-
-
 }
