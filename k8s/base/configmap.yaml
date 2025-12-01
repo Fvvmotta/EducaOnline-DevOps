@@ -1,6 +1,3 @@
-# ============================================
-# ConfigMap - Configurações Compartilhadas
-# ============================================
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -10,18 +7,19 @@ metadata:
     app.kubernetes.io/name: educaonline-config
     app.kubernetes.io/part-of: educaonline-platform
 data:
-  ASPNETCORE_ENVIRONMENT: "Production"
-  # URLs dos serviços internos
-  IDENTIDADE_URL: "http://identidade-api-service:80"
-  CONTEUDO_URL: "http://conteudo-api-service:80"
-  ALUNO_URL: "http://aluno-api-service:80"
-  PEDIDOS_URL: "http://pedidos-api-service:80"
-  FINANCEIRO_URL: "http://financeiro-api-service:80"
-  BFF_URL: "http://bff-service:80"
+  ASPNETCORE_ENVIRONMENT: "Development"
+  ASPNETCORE_URLS: "http://+:8080"
+  # URLs dos servicos internos
+  IDENTIDADE_URL: "http://identidade-api-service:8080"
+  CONTEUDO_URL: "http://conteudo-api-service:8080"
+  ALUNO_URL: "http://aluno-api-service:8080"
+  PEDIDOS_URL: "http://pedidos-api-service:8080"
+  FINANCEIRO_URL: "http://financeiro-api-service:8080"
+  BFF_URL: "http://bff-service:8080"
   # RabbitMQ
   RABBITMQ_HOST: "rabbitmq-service"
   RABBITMQ_PORT: "5672"
   # JWT
   JWT_EMISSOR: "EducaOnline"
-  JWT_VALIDO_EM: "https://educaonline.com"
-  JWT_EXPIRACAO_HORAS: "24"
+  JWT_AUDIENCIA: "https://localhost"
+  JWT_HORAS_EXPIRAR: "24"
