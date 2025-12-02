@@ -346,4 +346,4 @@ Projeto acadêmico - MBA DevXpert Full Stack .NET
 
 ---
 
-**Última atualização**: Dezembro/2024
+**Última atualização**: Dezembro/2025
