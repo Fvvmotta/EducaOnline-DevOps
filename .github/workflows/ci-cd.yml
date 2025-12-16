@@ -1,8 +1,3 @@
-# ============================================
-# GitHub Actions - CI/CD Pipeline
-# EducaOnline - Build, Test e Deploy
-# ============================================
-
 name: CI/CD Pipeline
 
 on:
@@ -17,19 +12,17 @@ on:
 
 env:
   DOTNET_VERSION: '9.0.x'
+  NODE_VERSION: '20.x'
   DOCKER_REGISTRY: docker.io
   DOCKER_USERNAME: fermotta
 
 jobs:
-  # ==========================================
-  # BUILD E TESTES
-  # ==========================================
-  build-and-test:
-    name: Build e Testes
+  build-and-test-backend:
+    name: Build e Testes Backend
     runs-on: ubuntu-latest
-    
+
     steps:
-      - name: Checkout do código
+      - name: Checkout do codigo
         uses: actions/checkout@v4
 
       - name: Setup .NET SDK
@@ -45,26 +38,54 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-nuget-
 
-      - name: Restore de dependências
+      - name: Restore de dependencias
         run: dotnet restore backend/EducaOnline.sln
 
-      - name: Build da solução
+      - name: Build da solucao
         run: dotnet build backend/EducaOnline.sln --configuration Release --no-restore
 
-      - name: Executar testes unitários
+      - name: Executar testes unitarios
         run: dotnet test backend/EducaOnline.sln --configuration Release --no-build --verbosity normal
         continue-on-error: true
 
-  # ==========================================
-  # ANÁLISE DE CÓDIGO
-  # ==========================================
-  code-analysis:
-    name: Análise de Código
+  build-and-test-frontend:
+    name: Build e Testes Frontend
     runs-on: ubuntu-latest
-    needs: build-and-test
-    
+
     steps:
-      - name: Checkout do código
+      - name: Checkout do codigo
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+          cache-dependency-path: frontend/package-lock.json
+
+      - name: Instalar dependencias
+        run: |
+          cd frontend
+          npm ci
+
+      - name: Build do frontend
+        run: |
+          cd frontend
+          npx nx build educa-online --configuration=production
+
+      - name: Lint do frontend
+        run: |
+          cd frontend
+          npx nx lint educa-online
+        continue-on-error: true
+
+  code-analysis:
+    name: Analise de Codigo
+    runs-on: ubuntu-latest
+    needs: [build-and-test-backend, build-and-test-frontend]
+
+    steps:
+      - name: Checkout do codigo
         uses: actions/checkout@v4
 
       - name: Setup .NET SDK
@@ -72,22 +93,19 @@ jobs:
         with:
           dotnet-version: ${{ env.DOTNET_VERSION }}
 
-      - name: Restore de dependências
+      - name: Restore de dependencias
         run: dotnet restore backend/EducaOnline.sln
 
-      - name: Análise com dotnet format
+      - name: Analise com dotnet format
         run: dotnet format backend/EducaOnline.sln --verify-no-changes --verbosity diagnostic
         continue-on-error: true
 
-  # ==========================================
-  # BUILD E PUSH DAS IMAGENS DOCKER
-  # ==========================================
-  docker-build-push:
-    name: Build e Push Docker Images
+  docker-build-push-backend:
+    name: Build e Push Docker Backend
     runs-on: ubuntu-latest
-    needs: [build-and-test, code-analysis]
+    needs: [build-and-test-backend, build-and-test-frontend, code-analysis]
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-    
+
     strategy:
       matrix:
         include:
@@ -109,9 +127,9 @@ jobs:
           - service: bff
             dockerfile: backend/src/api_gateways/EducaOnline.Bff/Dockerfile
             context: backend
-    
+
     steps:
-      - name: Checkout do código
+      - name: Checkout do codigo
         uses: actions/checkout@v4
 
       - name: Set up Docker Buildx
@@ -144,27 +162,69 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
-  # ==========================================
-  # NOTIFICAÇÃO DE SUCESSO
-  # ==========================================
+  docker-build-push-frontend:
+    name: Build e Push Docker Frontend
+    runs-on: ubuntu-latest
+    needs: [build-and-test-backend, build-and-test-frontend, code-analysis]
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+
+    steps:
+      - name: Checkout do codigo
+        uses: actions/checkout@v4
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Login no Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Extrair metadata para Docker
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{ env.DOCKER_USERNAME }}/educaonline-frontend
+          tags: |
+            type=ref,event=branch
+            type=sha,prefix=
+            type=raw,value=latest,enable={{is_default_branch}}
+
+      - name: Build e Push da imagem Frontend
+        uses: docker/build-push-action@v5
+        with:
+          context: frontend
+          file: frontend/Dockerfile
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
   notify-success:
     name: Notificar Sucesso
     runs-on: ubuntu-latest
-    needs: docker-build-push
+    needs: [docker-build-push-backend, docker-build-push-frontend]
     if: success()
-    
+
     steps:
       - name: Resumo do Deploy
         run: |
-          echo "## 🚀 Deploy realizado com sucesso!" >> $GITHUB_STEP_SUMMARY
+          echo "## Deploy realizado com sucesso!" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "### Imagens publicadas no Docker Hub:" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Backend:**" >> $GITHUB_STEP_SUMMARY
           echo "- fermotta/educaonline-identidade-api:latest" >> $GITHUB_STEP_SUMMARY
           echo "- fermotta/educaonline-conteudo-api:latest" >> $GITHUB_STEP_SUMMARY
           echo "- fermotta/educaonline-aluno-api:latest" >> $GITHUB_STEP_SUMMARY
           echo "- fermotta/educaonline-pedidos-api:latest" >> $GITHUB_STEP_SUMMARY
           echo "- fermotta/educaonline-financeiro-api:latest" >> $GITHUB_STEP_SUMMARY
           echo "- fermotta/educaonline-bff:latest" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Frontend:**" >> $GITHUB_STEP_SUMMARY
+          echo "- fermotta/educaonline-frontend:latest" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "**Commit:** ${{ github.sha }}" >> $GITHUB_STEP_SUMMARY
           echo "**Branch:** ${{ github.ref_name }}" >> $GITHUB_STEP_SUMMARY

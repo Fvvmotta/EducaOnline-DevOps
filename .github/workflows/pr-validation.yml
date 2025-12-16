@@ -1,8 +1,3 @@
-# ============================================
-# GitHub Actions - PR Validation
-# Validação de Pull Requests
-# ============================================
-
 name: PR Validation
 
 on:
@@ -14,17 +9,15 @@ on:
 
 env:
   DOTNET_VERSION: '9.0.x'
+  NODE_VERSION: '20.x'
 
 jobs:
-  # ==========================================
-  # VALIDAÇÃO DE BUILD
-  # ==========================================
-  validate-build:
-    name: Validar Build
+  validate-build-backend:
+    name: Validar Build Backend
     runs-on: ubuntu-latest
     
     steps:
-      - name: Checkout do código
+      - name: Checkout do codigo
         uses: actions/checkout@v4
 
       - name: Setup .NET SDK
@@ -40,22 +33,44 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-nuget-
 
-      - name: Restore de dependências
+      - name: Restore de dependencias
         run: dotnet restore backend/EducaOnline.sln
 
-      - name: Build da solução
+      - name: Build da solucao
         run: dotnet build backend/EducaOnline.sln --configuration Release --no-restore
 
-  # ==========================================
-  # VALIDAÇÃO DE TESTES
-  # ==========================================
+  validate-build-frontend:
+    name: Validar Build Frontend
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout do codigo
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+          cache-dependency-path: frontend/package-lock.json
+
+      - name: Instalar dependencias
+        run: |
+          cd frontend
+          npm ci
+
+      - name: Build do frontend
+        run: |
+          cd frontend
+          npx nx build educa-online --configuration=production
+
   validate-tests:
     name: Validar Testes
     runs-on: ubuntu-latest
-    needs: validate-build
+    needs: validate-build-backend
     
     steps:
-      - name: Checkout do código
+      - name: Checkout do codigo
         uses: actions/checkout@v4
 
       - name: Setup .NET SDK
@@ -63,47 +78,46 @@ jobs:
         with:
           dotnet-version: ${{ env.DOTNET_VERSION }}
 
-      - name: Restore de dependências
+      - name: Restore de dependencias
         run: dotnet restore backend/EducaOnline.sln
 
-      - name: Build da solução
+      - name: Build da solucao
         run: dotnet build backend/EducaOnline.sln --configuration Release --no-restore
 
       - name: Executar testes
         run: dotnet test backend/EducaOnline.sln --configuration Release --no-build --verbosity normal
         continue-on-error: true
 
-  # ==========================================
-  # VALIDAÇÃO DE DOCKERFILES
-  # ==========================================
   validate-dockerfiles:
     name: Validar Dockerfiles
     runs-on: ubuntu-latest
     
     steps:
-      - name: Checkout do código
+      - name: Checkout do codigo
         uses: actions/checkout@v4
 
       - name: Verificar Dockerfiles existem
         run: |
-          echo "Verificando Dockerfiles..."
+          echo "Verificando Dockerfiles Backend..."
           ls -la backend/src/services/EducaOnline.Identidade.API/Dockerfile
           ls -la backend/src/services/EducaOnline.Conteudo.API/Dockerfile
           ls -la backend/src/services/EducaOnline.Aluno.API/Dockerfile
           ls -la backend/src/services/EducaOnline.Pedidos.API/Dockerfile
           ls -la backend/src/services/EducaOnline.Financeiro.API/Dockerfile
           ls -la backend/src/api_gateways/EducaOnline.Bff/Dockerfile
-          echo "✅ Todos os Dockerfiles encontrados"
+          echo ""
+          echo "Verificando Dockerfile Frontend..."
+          ls -la frontend/Dockerfile
+          ls -la frontend/nginx.conf
+          echo ""
+          echo "Todos os Dockerfiles encontrados!"
 
-  # ==========================================
-  # VALIDAÇÃO DE YAML KUBERNETES
-  # ==========================================
   validate-kubernetes:
     name: Validar Manifests K8s
     runs-on: ubuntu-latest
     
     steps:
-      - name: Checkout do código
+      - name: Checkout do codigo
         uses: actions/checkout@v4
 
       - name: Verificar manifests existem
@@ -111,25 +125,23 @@ jobs:
           echo "Verificando manifests Kubernetes..."
           ls -la k8s/base/
           ls -la k8s/services/
-          echo "✅ Manifests encontrados"
+          echo "Manifests encontrados!"
 
-  # ==========================================
-  # RESUMO DO PR
-  # ==========================================
   pr-summary:
     name: Resumo do PR
     runs-on: ubuntu-latest
-    needs: [validate-build, validate-tests, validate-dockerfiles, validate-kubernetes]
+    needs: [validate-build-backend, validate-build-frontend, validate-tests, validate-dockerfiles, validate-kubernetes]
     if: always()
     
     steps:
       - name: Criar resumo
         run: |
-          echo "## 📋 Resumo da Validação do PR" >> $GITHUB_STEP_SUMMARY
+          echo "## Resumo da Validacao do PR" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "| Check | Status |" >> $GITHUB_STEP_SUMMARY
           echo "|-------|--------|" >> $GITHUB_STEP_SUMMARY
-          echo "| Build | ${{ needs.validate-build.result == 'success' && '✅' || '❌' }} |" >> $GITHUB_STEP_SUMMARY
-          echo "| Testes | ${{ needs.validate-tests.result == 'success' && '✅' || '❌' }} |" >> $GITHUB_STEP_SUMMARY
-          echo "| Dockerfiles | ${{ needs.validate-dockerfiles.result == 'success' && '✅' || '⚠️' }} |" >> $GITHUB_STEP_SUMMARY
-          echo "| Kubernetes | ${{ needs.validate-kubernetes.result == 'success' && '✅' || '⚠️' }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Build Backend | ${{ needs.validate-build-backend.result == 'success' && 'Success' || 'Error' }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Build Frontend | ${{ needs.validate-build-frontend.result == 'success' && 'Success' || 'Error' }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Testes | ${{ needs.validate-tests.result == 'success' && 'Success' || 'Warning' }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Dockerfiles | ${{ needs.validate-dockerfiles.result == 'success' && 'Success' || 'Warning' }} |" >> $GITHUB_STEP_SUMMARY
+          echo "| Kubernetes | ${{ needs.validate-kubernetes.result == 'success' && 'Success' || 'Warning' }} |" >> $GITHUB_STEP_SUMMARY
